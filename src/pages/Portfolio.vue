@@ -1,11 +1,12 @@
 <template lang="pug">
-  .container
-    | Sunroof init
+  .page.portfolio
+    .container
+      | Portfolio
 </template>
 
 <script>
 export default {
-  name: 'Main',
+  name: 'Portfolio',
   data () {
     return {
 
@@ -19,5 +20,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .portfolio {
+    background: rgba(36,36,36,0.95);
+  }
 </style>

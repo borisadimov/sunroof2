@@ -1,143 +1,69 @@
 <template lang="pug">
   #app
-    HeaderComponent
-    router-view
+    Navigation
+    transition(name="fade" appear)
+      router-view
 </template>
 
 <script>
-import HeaderComponent from '@/components/HeaderComponent'
+import Navigation from '@/components/Navigation/Navigation'
 
 export default {
   name: 'app',
   components: {
-    HeaderComponent
+    Navigation
   }
 }
 </script>
 
 <style lang="scss">
-  @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,500,700');
+  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
   @import url('normalize.css');
 
+  .preloader {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: red;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
   #app {
-    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-
-    padding: 90px 0 60px;
-  }
-
-  .title {
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 50px;
   }
 
   .container {
-    width: 100%;
-    max-width: 1020px;
-    padding: 0 30px;
-    margin: 0 auto;
     position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 100px;
   }
 
-  .form {
-
+  .page {
+    width: 100%;
+    height: 100vh;
+    opacity: 0.999;
   }
 
-  .form-field {
-    margin-bottom: 30px;
-
-    display: flex;
-    flex-flow: column nowrap;
+  .fade-enter-active, .fade-leave-active {
+    transition-property: opacity;
+    transition-duration: .5s;
   }
 
-  .form-input,
-  .form-textarea {
-    padding: 10px 16px;
-
-    border: 1px #CFD8DC solid;
-    border-radius: 4px;
-    outline: none;
-
-    font-size: 16px;
-
-    transition: border-color .2s ease;
-    will-change: border-color;
-
-    &:focus {
-      border-color: #2196F3;
-    }
+  .fade-enter-active {
+    transition-delay: .5s;
   }
 
-  .form-textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-
-  .form-label {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-
-  .form-checkboxes {
-    margin-bottom: 30px;
-
-    display: flex;
-    flex-flow: row nowrap;
-
-    .form-label {
-      cursor: pointer;
-    }
-  }
-
-  .form-checkbox {
-    margin-right: 10px;
-  }
-
-  .form-hint {
-    margin-top: 5px;
-    color: #f44336;
-    font-size: 12px;
-  }
-
-  .form-buttons {
-    display: flex;
-    flex-flow: row nowrap;
-  }
-
-  .form-buttons--justify {
-    justify-content: space-between;
-  }
-
-  .button {
-    -webkit-appearance: none !important;
-    margin-right: 15px;
-    padding: 12px 16px;
-    font-size: 16px;
-    color: #FFFFFF;
-    background: #4CAF50;
-    border-radius: 4px;
-    cursor: pointer;
-
-    transition: background .1s ease;
-    will-change: background;
-
-    &:hover {
-      background: #66BB6A;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  .button-blue {
-    background: #3F51B5;
-
-    &:hover {
-      background: #5C6BC0;
-    }
+  .fade-enter, .fade-leave-active {
+    opacity: 0;
   }
 </style>
