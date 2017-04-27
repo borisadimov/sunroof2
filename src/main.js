@@ -3,8 +3,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App'
+import svgicon from 'vue-svgicon'
 import router from './router'
 
+Vue.use(svgicon)
 Vue.use(Vuex)
 
 const store = new Vuex.Store({

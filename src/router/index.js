@@ -8,7 +8,7 @@ import Portfolio from '@/pages/Portfolio'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -33,3 +33,10 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  document.title = to.name
+  next()
+})
+
+export default router

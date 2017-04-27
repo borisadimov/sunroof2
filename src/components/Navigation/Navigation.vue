@@ -1,43 +1,40 @@
 <template lang="pug">
   transition(name="fade" appear)
-    .header
+    // .header
       .header-item
         router-link.header-link(to="/")
-          img(src="./home.svg")
+          svgicon(icon="home" width="16" height="17")
           .header-link__text
             | Home
         router-link.header-link(to="/")
-          img(src="./logo.svg")
+          svgicon(icon="logo" width="40" height="40")
         router-link.header-link(to="/about")
           .header-link__text
             | About
-          img(src="./about.svg")
+          svgicon(icon="about")
 
       .header-item
         router-link.header-link(to="/portfolio")
-          img(src="./portfolio.svg")
+          svgicon(icon="portfolio")
           .header-link__text
             | Portfolio
         router-link.header-link(to="/contact")
           .header-link__text
             | Contact
-          img(src="./contact.svg")
+          svgicon(icon="contact")
 </template>
 
 <script>
+import './icons'
+
 export default {
   name: 'Navigation',
   data () {
     return {
-      // homeSVG: require('./home.svg'),
-      // aboutSVG: require('./about.svg'),
-      // contactSVG: require('./contact.svg'),
-      // portfolioSVG: require('./portfolio.svg'),
     }
   },
 
   components: {
-
   },
 
   mounted () {
@@ -76,6 +73,8 @@ export default {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+
+    color: initial;
 
     &:hover .header-link__text {
       opacity: 0.999;

@@ -12,6 +12,9 @@ export default {
     }
   },
 
+  mounted () {
+  },
+
   components: {
 
   }
