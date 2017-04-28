@@ -4,11 +4,11 @@
       .slider-prev(@click="onSlide(prev, slides)")
       .slider-next(@click="onSlide(next, slides)")
       transition-group(:name="direction")
-        .slider-item(:key="JSON.stringify(slide)" v-for="slide, index in activeSlide(slides)")
+        .slider-item(:key="JSON.stringify(slide)" v-for="slide, index in slidesToShow", :class="slide.class")
           .slider-item__name
-            | {{ slide.name }}
+            | {{ slide.data.name }}
           .slider-item__description
-            | {{ slide.description }}
+            | {{ slide.data.description }}
           img(src="../assets/portfolio/1.jpg")
 </template>
 
@@ -68,6 +68,18 @@ export default {
   //     }
   //   })
   // },
+
+  computed: {
+    slidesToShow () {
+      const previousSlideIndex = this.slideIndex === 0 ? this.slides.length - 1 : this.slideIndex - 1
+      const nextSlideIndex = this.slideIndex === this.slides.length + 1 ? 0 : this.slideIndex + 1
+      return [
+        { class: 'previous', data: this.slides[previousSlideIndex] },
+        { class: 'active', data: this.slides[this.slideIndex] },
+        { class: 'next', data: this.slides[nextSlideIndex] }
+      ]
+    }
+  },
 
   methods: {
     onSlide (func, slides) {
@@ -139,6 +151,14 @@ export default {
 
     transition: transform .5s ease;
     transform: translate3d(0,0,0);
+
+    &.previous {
+      transform: translate3d(-50%, 0, 0)
+    }
+
+    &.next {
+      transform: translate3d(50%, 0, 0)
+    }
 
     &.left-enter {
       transform: translate3d(100%,0,0);
