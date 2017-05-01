@@ -3,7 +3,12 @@
     .slider(ref="slider")
       .slider-prev(@click="onSlide(prev, slides)")
       .slider-next(@click="onSlide(next, slides)")
-      transition-group(:name="direction")
+      transition-group(
+        :name="direction", 
+        mode="in-out",
+        v-on:before-enter="blockButtons",
+        v-on:after-enter="unblockButtons"
+      )
         .slider-item(:key="JSON.stringify(slide)" v-for="slide, index in slidesToShow", :class="slide.class")
           .slider-item__name
             | {{ slide.data.name }}
@@ -17,6 +22,7 @@ export default {
   name: 'Portfolio',
   data () {
     return {
+      buttonsBlocked: false,
       direction: 'left',
       // isDown: false,
       // startX: null,
@@ -72,7 +78,7 @@ export default {
   computed: {
     slidesToShow () {
       const previousSlideIndex = this.slideIndex === 0 ? this.slides.length - 1 : this.slideIndex - 1
-      const nextSlideIndex = this.slideIndex === this.slides.length + 1 ? 0 : this.slideIndex + 1
+      const nextSlideIndex = this.slideIndex === this.slides.length - 1 ? 0 : this.slideIndex + 1
       return [
         { class: 'previous', data: this.slides[previousSlideIndex] },
         { class: 'active', data: this.slides[this.slideIndex] },
@@ -82,6 +88,14 @@ export default {
   },
 
   methods: {
+
+    blockButtons () {
+      this.buttonsBlocked = true
+    },
+    unblockButtons () {
+      this.buttonsBlocked = false
+    },
+
     onSlide (func, slides) {
       if (this.canSlide) {
         this.canSlide = false
@@ -91,11 +105,17 @@ export default {
     },
 
     next (slides) {
+      if (this.buttonsBlocked) {
+        return
+      }
       this.direction = 'left'
       this.slideIndex = this.slideIndex < slides.length - 1 ? this.slideIndex + 1 : 0
     },
 
     prev (slides) {
+      if (this.buttonsBlocked) {
+        return
+      }
       this.direction = 'right'
       this.slideIndex = this.slideIndex > 0 ? this.slideIndex - 1 : slides.length - 1
     },
@@ -149,7 +169,7 @@ export default {
     background-position: center center;
     background-size: cover;
 
-    transition: transform .5s ease;
+    transition: transform 1.5s ease;
     transform: translate3d(0,0,0);
 
     &.previous {
@@ -160,30 +180,101 @@ export default {
       transform: translate3d(50%, 0, 0)
     }
 
-    &.left-enter {
-      transform: translate3d(100%,0,0);
+    // &.left-enter {
+    //   transform: translate3d(100%,0,0);
+    // }
+
+    // &.left-leave-active {
+    //   transition: all 1s;
+    //   transform: translate3d(-100%,0,0);
+    // }
+
+    // &.left-leave {
+    //   transition-delay: .05s;
+    // }
+
+    &.next {
+      &.right-enter {
+        transform: translate3d(0%, 0, 0);
+      }
+
+      &.right-leave-to {
+        transform: translate3d(100%, 0, 0);
+      }
+
+      &.left-leave {
+        transform: translate3d(50%, 0, 0);
+      }
+
+      &.left-enter {
+        transform: translate3d(100%, 0, 0);
+      }
+
+      &.left-enter-to {
+        transform: translate3d(50%, 0, 0);
+      }
+
+      &.left-leave-to {
+        transform: translate3d(0%, 0, 0);
+        transition: 1.5s
+      }
     }
 
-    &.left-leave-active {
-      transform: translate3d(-100%,0,0);
+    &.active {
+      &.right-enter {
+        transform: translate3d(-50%, 0, 0);
+      }
+
+      &.right-leave-to {
+        opacity: 0;
+      }
+
+      &.left-leave {
+        transform: translate3d(0%, 0, 0);
+      }
+
+      &.left-enter-to {
+        opacity: 0;
+      }
+
+      &.left-leave-to {
+        transform: translate3d(-50%, 0, 0);
+        transition: 1.5s
+      }
+
     }
 
-    &.left-leave {
-      transition-delay: .05s;
+    &.previous {
+      &.right-enter {
+        transform: translate3d(-100%, 0, 0);
+      }
+
+      &.right-leave-to {
+        opacity: 0;
+      }
+
+      &.left-leave {
+        transform: translate3d(-50%, 0, 0);
+      }
+
+      &.left-enter-to {
+        opacity: 0;
+      }
+
+      &.left-leave-to {
+        transform: translate3d(-100%, 0, 0);
+        transition: 1.5s
+      }
+
     }
 
-    &.right-enter {
-      transform: translate3d(-100%,0,0);
+    &.right-enter-active {
+      transition: transform 1.5s;
     }
 
-    &.right-leave-active {
-      transform: translate3d(100%,0,0);
-    }
 
-    &.right-leave {
-      transition-delay: .05s;
-    }
   }
+  
 
   .slider-item img {
     max-height: 375px;
