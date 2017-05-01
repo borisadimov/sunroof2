@@ -24,11 +24,11 @@ export default {
       canSlide: true,
       slideIndex: 0,
       slides: [
-        { id: 1, name: 'Dragon Drop', description: 'Digital Concept, Design, UI/UX, Development' },
-        { id: 2, name: 'Dragon Drop', description: 'Digital Concept, Design, UI/UX, Development' },
-        { id: 3, name: 'Dragon Drop', description: 'Digital Concept, Design, UI/UX, Development' },
-        { id: 4, name: 'Dragon Drop', description: 'Digital Concept, Design, UI/UX, Development' },
-        { id: 5, name: 'Dragon Drop', description: 'Digital Concept, Design, UI/UX, Development' }
+        { id: 1, name: 'Dragon Drop 1', description: 'Digital Concept, Design, UI/UX, Development' },
+        { id: 2, name: 'Dragon Drop 2', description: 'Digital Concept, Design, UI/UX, Development' },
+        { id: 3, name: 'Dragon Drop 3', description: 'Digital Concept, Design, UI/UX, Development' },
+        { id: 4, name: 'Dragon Drop 4', description: 'Digital Concept, Design, UI/UX, Development' },
+        { id: 5, name: 'Dragon Drop 5', description: 'Digital Concept, Design, UI/UX, Development' }
       ]
     }
   },
