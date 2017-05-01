@@ -5,6 +5,7 @@ import Home from '@/pages/Home'
 import About from '@/pages/About'
 import Contact from '@/pages/Contact'
 import Portfolio from '@/pages/Portfolio'
+import Project from '@/pages/Project'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ const router = new Router({
       path: '/portfolio',
       name: 'Portfolio',
       component: Portfolio
+    },
+    {
+      path: '/portfolio/:id',
+      name: 'Project',
+      component: Project
     }
   ]
 })

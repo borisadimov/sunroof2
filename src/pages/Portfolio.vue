@@ -4,20 +4,23 @@
       .slider-prev(@click="onSlide(prev, slides)")
       .slider-next(@click="onSlide(next, slides)")
       transition-group(
-        :name="direction", 
+        :name="direction",
         mode="in-out",
         v-on:before-enter="blockButtons",
         v-on:after-enter="unblockButtons"
       )
         .slider-item(:key="JSON.stringify(slide)" v-for="slide, index in slidesToShow", :class="slide.class")
-          .slider-item__name
-            | {{ slide.data.name }}
-          .slider-item__description
-            | {{ slide.data.description }}
-          img(src="../assets/portfolio/1.jpg")
+          router-link.slider-item__link(:to="'/portfolio/' + slide.data.id")
+            .slider-item__name
+              | {{ slide.data.name }}
+            .slider-item__description
+              | {{ slide.data.description }}
+            img(src="../assets/portfolio/1.jpg")
 </template>
 
 <script>
+import content from '@/config/fixtures'
+
 export default {
   name: 'Portfolio',
   data () {
@@ -29,51 +32,9 @@ export default {
       // scrollLeft: null,
       canSlide: true,
       slideIndex: 0,
-      slides: [
-        { id: 1, name: 'Dragon Drop 1', description: 'Digital Concept, Design, UI/UX, Development' },
-        { id: 2, name: 'Dragon Drop 2', description: 'Digital Concept, Design, UI/UX, Development' },
-        { id: 3, name: 'Dragon Drop 3', description: 'Digital Concept, Design, UI/UX, Development' },
-        { id: 4, name: 'Dragon Drop 4', description: 'Digital Concept, Design, UI/UX, Development' },
-        { id: 5, name: 'Dragon Drop 5', description: 'Digital Concept, Design, UI/UX, Development' }
-      ]
+      slides: content
     }
   },
-
-  components: {
-
-  },
-
-  // mounted () {
-  //   const { slider } = this.$refs
-
-  //   slider.addEventListener('mousedown', (e) => {
-  //     this.isDown = true
-  //     this.startX = e.pageX - slider.offsetLeft
-  //     this.scrollLeft = slider.scrollLeft
-  //   })
-
-  //   slider.addEventListener('mouseleave', (e) => {
-  //     this.isDown = false
-  //   })
-
-  //   slider.addEventListener('mouseup', (e) => {
-  //     this.isDown = false
-  //   })
-
-  //   slider.addEventListener('mousemove', (e) => {
-  //     if (!this.isDown) return
-  //     e.preventDefault()
-
-  //     const x = e.pageX - slider.offsetLeft
-  //     const walk = (x - this.startX) * 3
-
-  //     if (walk > 100) {
-  //       return this.prev(this.slides)
-  //     } else if (walk < -100) {
-  //       return this.next(this.slides)
-  //     }
-  //   })
-  // },
 
   computed: {
     slidesToShow () {
@@ -88,10 +49,10 @@ export default {
   },
 
   methods: {
-
     blockButtons () {
       this.buttonsBlocked = true
     },
+
     unblockButtons () {
       this.buttonsBlocked = false
     },
@@ -169,8 +130,12 @@ export default {
     background-position: center center;
     background-size: cover;
 
-    transition: transform 1.5s ease;
+    transition: transform 1s ease;
     transform: translate3d(0,0,0);
+
+    &__link {
+      text-decoration: none;
+    }
 
     &.previous {
       transform: translate3d(-50%, 0, 0)
@@ -179,19 +144,6 @@ export default {
     &.next {
       transform: translate3d(50%, 0, 0)
     }
-
-    // &.left-enter {
-    //   transform: translate3d(100%,0,0);
-    // }
-
-    // &.left-leave-active {
-    //   transition: all 1s;
-    //   transform: translate3d(-100%,0,0);
-    // }
-
-    // &.left-leave {
-    //   transition-delay: .05s;
-    // }
 
     &.next {
       &.right-enter {
@@ -216,7 +168,7 @@ export default {
 
       &.left-leave-to {
         transform: translate3d(0%, 0, 0);
-        transition: 1.5s
+        transition: transform 1s ease;
       }
     }
 
@@ -239,7 +191,7 @@ export default {
 
       &.left-leave-to {
         transform: translate3d(-50%, 0, 0);
-        transition: 1.5s
+        transition: transform 1s ease;
       }
 
     }
@@ -263,13 +215,13 @@ export default {
 
       &.left-leave-to {
         transform: translate3d(-100%, 0, 0);
-        transition: 1.5s
+        transition: transform 1s ease;
       }
 
     }
 
     &.right-enter-active {
-      transition: transform 1.5s;
+      transition: transform 1s;
     }
 
 
