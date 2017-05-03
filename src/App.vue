@@ -2,7 +2,7 @@
   #app(:class="$route.name.toLowerCase()")
     transition(name="color" appear)
       router-link.header-link.header-link__home(to="/")
-        svgicon.svg-home(icon="home" width="16" height="17")
+        svgicon.svg-home(icon="home" width="18" height="19")
         .header-link__text
           | Home
 
@@ -14,7 +14,7 @@
       router-link.header-link.header-link__about(to="/about")
         .header-link__text
           | About
-        svgicon.svg-about(icon="about" width="16" height="16")
+        svgicon.svg-about(icon="about" width="18" height="18")
 
     transition(name="color" appear)
       router-link.header-link.header-link__portfolio(to="/portfolio")
@@ -65,7 +65,7 @@ export default {
 
   .page {
     width: 100%;
-    min-height: 650px;
+    min-height: 700px;
     height: 100vh;
     opacity: 0.999;
   }

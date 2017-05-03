@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import Home from '@/pages/Home'
 import About from '@/pages/About'
 import Contact from '@/pages/Contact'
-import Portfolio from '@/pages/Portfolio'
+import PortfolioSlider from '@/pages/PortfolioSlider'
 import Project from '@/pages/Project'
 
 Vue.use(Router)
@@ -30,7 +30,7 @@ const router = new Router({
     {
       path: '/portfolio',
       name: 'Portfolio',
-      component: Portfolio
+      component: PortfolioSlider
     },
     {
       path: '/portfolio/:id',

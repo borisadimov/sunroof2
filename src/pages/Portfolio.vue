@@ -82,6 +82,14 @@ export default {
 
     activeSlide (slides) {
       return this.slides.filter((s, i) => i === this.slideIndex)
+    },
+
+    setSlide (i) {
+      if (this.slideIndex < i) {
+        this.direction = 'left'
+      } else {
+        this.direction = 'right'
+      }
     }
   }
 }
@@ -102,16 +110,14 @@ export default {
     font-size: 30px;
     text-align: center;
 
-    position: relative;
-
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    align-items: center;
 
     span {
-      position: relative;
+      height: 70vh;
       width: 100%;
-      height: 100%;
       display: block;
     }
   }
@@ -124,49 +130,58 @@ export default {
     align-items: center;
 
     width: 100%;
-    height: 100%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
 
     transition: transform 1s ease;
     transform: translate3d(0,0,0);
+    will-change: transform;
 
     text-decoration: none;
 
     &.previous {
       transform: translate3d(-50%, 0, 0);
+      will-change: transform;
       pointer-events: none;
     }
 
     &.next {
       transform: translate3d(50%, 0, 0);
+      will-change: transform;
       pointer-events: none;
     }
 
     &.next {
       &.right-enter {
         transform: translate3d(0%, 0, 0);
+        will-change: transform;
+        opacity: 0;
       }
 
       &.right-leave-to {
         transform: translate3d(100%, 0, 0);
+        will-change: transform;
       }
 
       &.left-leave {
         transform: translate3d(50%, 0, 0);
+        will-change: transform;
       }
 
       &.left-enter {
         transform: translate3d(100%, 0, 0);
+        will-change: transform;
       }
 
       &.left-enter-to {
         transform: translate3d(50%, 0, 0);
+        will-change: transform;
       }
 
       &.left-leave-to {
         transform: translate3d(0%, 0, 0);
+        will-change: transform;
         transition: transform 1s ease;
       }
     }
@@ -174,6 +189,8 @@ export default {
     &.active {
       &.right-enter {
         transform: translate3d(-50%, 0, 0);
+        will-change: transform;
+        opacity: 0;
       }
 
       &.right-leave-to {
@@ -182,6 +199,7 @@ export default {
 
       &.left-leave {
         transform: translate3d(0%, 0, 0);
+        will-change: transform;
       }
 
       &.left-enter-to {
@@ -190,6 +208,7 @@ export default {
 
       &.left-leave-to {
         transform: translate3d(-50%, 0, 0);
+        will-change: transform;
         transition: transform 1s ease;
       }
 
@@ -198,6 +217,8 @@ export default {
     &.previous {
       &.right-enter {
         transform: translate3d(-100%, 0, 0);
+        will-change: transform;
+        opacity: 0;
       }
 
       &.right-leave-to {
@@ -206,6 +227,7 @@ export default {
 
       &.left-leave {
         transform: translate3d(-50%, 0, 0);
+        will-change: transform;
       }
 
       &.left-enter-to {
@@ -214,18 +236,11 @@ export default {
 
       &.left-leave-to {
         transform: translate3d(-100%, 0, 0);
+        will-change: transform;
         transition: transform 1s ease;
       }
-
     }
-
-    &.right-enter-active {
-      transition: transform 1s;
-    }
-
-
   }
-  
 
   .slider-item img {
     max-height: 375px;
