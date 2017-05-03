@@ -24,6 +24,11 @@ export default {
 <style scoped>
   .home {
     background: url('../assets/home.svg') no-repeat center / cover;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
   }
 
   .logo {
@@ -31,9 +36,6 @@ export default {
     width: 300px;
     height: 145px;
 
-    position: absolute;
-    top: 39%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    margin-bottom: 150px;
   }
 </style>

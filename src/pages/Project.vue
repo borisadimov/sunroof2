@@ -12,28 +12,11 @@ import content from '@/config/fixtures'
 
 export default {
   name: 'Project',
-  data () {
-    return {
-
-    }
-  },
-
-  components: {
-
-  },
 
   computed: {
     project () {
       return content.filter(i => +i.id === +this.$route.params.id)[0]
     }
-  },
-
-  mounted () {
-
-  },
-
-  methods: {
-
   }
 }
 </script>

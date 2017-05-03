@@ -9,13 +9,12 @@
         v-on:before-enter="blockButtons",
         v-on:after-enter="unblockButtons"
       )
-        .slider-item(:key="JSON.stringify(slide)" v-for="slide, index in slidesToShow", :class="slide.class")
-          router-link.slider-item__link(:to="'/portfolio/' + slide.data.id")
-            .slider-item__name
-              | {{ slide.data.name }}
-            .slider-item__description
-              | {{ slide.data.description }}
-            img(src="../assets/portfolio/1.jpg")
+        router-link.slider-item(:to="'/portfolio/' + slide.data.id", :key="JSON.stringify(slide)" v-for="slide, index in slidesToShow", :class="slide.class")
+          .slider-item__name
+            | {{ slide.data.name }}
+          .slider-item__description
+            | {{ slide.data.description }}
+          img(src="../assets/portfolio/1.jpg")
 </template>
 
 <script>
@@ -133,16 +132,16 @@ export default {
     transition: transform 1s ease;
     transform: translate3d(0,0,0);
 
-    &__link {
-      text-decoration: none;
-    }
+    text-decoration: none;
 
     &.previous {
-      transform: translate3d(-50%, 0, 0)
+      transform: translate3d(-50%, 0, 0);
+      pointer-events: none;
     }
 
     &.next {
-      transform: translate3d(50%, 0, 0)
+      transform: translate3d(50%, 0, 0);
+      pointer-events: none;
     }
 
     &.next {
