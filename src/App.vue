@@ -94,7 +94,7 @@ export default {
     align-items: center;
 
     color: initial;
-    position: absolute;
+    position: fixed;
     z-index: 11;
 
     &:hover .header-link__text {

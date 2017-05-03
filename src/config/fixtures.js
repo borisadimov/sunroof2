@@ -1,63 +1,153 @@
 const content = [
   {
     id: 1,
-    name: 'Dragon Drop 1',
-    description: 'Digital Concept, Design, UI/UX, Development',
-    preview_image: '1.jpg'
+    title: 'Dragon Drop 1',
+    subtitle: 'Digital Concept, Design, UI/UX, Development',
+    preview_image: '1.jpg',
+    live: 'http://website.com',
+    description: 'Licks your face paw at your fat belly, for present belly, scratch hand when stroked. Fall over dead (not really but gets sypathy) lie in the sink all day or jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub.',
+    challenge: "Thinking longingly about tuna brine kitty poochy sleep in the bathroom sink and kitten is playing with dead mouse so tuxedo cats always looking dapper give attitude. Caticus cuteicus pee in human's bed until he cleans the litter box. Kitten is playing with dead mouse vommit food and eat it again. Wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again sit in window and stare ooo, a bird! yum lounge in doorway or ask for petting but destroy couch eat from dog's food. Meow loudly just to annoy owners give.",
+    images: [
+      '1.jpg',
+      '1.jpg',
+      '1.jpg',
+      '1.jpg'
+    ]
   },
   {
     id: 2,
-    name: 'Dragon Drop 2',
-    description: 'Digital Concept, Design, UI/UX, Development',
-    preview_image: '1.jpg'
+    title: 'Dragon Drop 2',
+    subtitle: 'Digital Concept, Design, UI/UX, Development',
+    preview_image: '1.jpg',
+    live: 'http://website.com',
+    description: 'Licks your face paw at your fat belly, for present belly, scratch hand when stroked. Fall over dead (not really but gets sypathy) lie in the sink all day or jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub.',
+    challenge: "Thinking longingly about tuna brine kitty poochy sleep in the bathroom sink and kitten is playing with dead mouse so tuxedo cats always looking dapper give attitude. Caticus cuteicus pee in human's bed until he cleans the litter box. Kitten is playing with dead mouse vommit food and eat it again. Wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again sit in window and stare ooo, a bird! yum lounge in doorway or ask for petting but destroy couch eat from dog's food. Meow loudly just to annoy owners give.",
+    images: [
+      '1.jpg',
+      '1.jpg',
+      '1.jpg',
+      '1.jpg'
+    ]
   },
   {
     id: 3,
-    name: 'Dragon Drop 3',
-    description: 'Digital Concept, Design, UI/UX, Development',
-    preview_image: '1.jpg'
+    title: 'Dragon Drop 3',
+    subtitle: 'Digital Concept, Design, UI/UX, Development',
+    preview_image: '1.jpg',
+    live: 'http://website.com',
+    description: 'Licks your face paw at your fat belly, for present belly, scratch hand when stroked. Fall over dead (not really but gets sypathy) lie in the sink all day or jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub.',
+    challenge: "Thinking longingly about tuna brine kitty poochy sleep in the bathroom sink and kitten is playing with dead mouse so tuxedo cats always looking dapper give attitude. Caticus cuteicus pee in human's bed until he cleans the litter box. Kitten is playing with dead mouse vommit food and eat it again. Wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again sit in window and stare ooo, a bird! yum lounge in doorway or ask for petting but destroy couch eat from dog's food. Meow loudly just to annoy owners give.",
+    images: [
+      '1.jpg',
+      '1.jpg',
+      '1.jpg',
+      '1.jpg'
+    ]
   },
   {
     id: 4,
-    name: 'Dragon Drop 4',
-    description: 'Digital Concept, Design, UI/UX, Development',
-    preview_image: '1.jpg'
+    title: 'Dragon Drop 4',
+    subtitle: 'Digital Concept, Design, UI/UX, Development',
+    preview_image: '1.jpg',
+    live: 'http://website.com',
+    description: 'Licks your face paw at your fat belly, for present belly, scratch hand when stroked. Fall over dead (not really but gets sypathy) lie in the sink all day or jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub.',
+    challenge: "Thinking longingly about tuna brine kitty poochy sleep in the bathroom sink and kitten is playing with dead mouse so tuxedo cats always looking dapper give attitude. Caticus cuteicus pee in human's bed until he cleans the litter box. Kitten is playing with dead mouse vommit food and eat it again. Wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again sit in window and stare ooo, a bird! yum lounge in doorway or ask for petting but destroy couch eat from dog's food. Meow loudly just to annoy owners give.",
+    images: [
+      '1.jpg',
+      '1.jpg',
+      '1.jpg',
+      '1.jpg'
+    ]
   },
   {
     id: 5,
-    name: 'Dragon Drop 5',
-    description: 'Digital Concept, Design, UI/UX, Development',
-    preview_image: '1.jpg'
+    title: 'Dragon Drop 5',
+    subtitle: 'Digital Concept, Design, UI/UX, Development',
+    preview_image: '1.jpg',
+    live: 'http://website.com',
+    description: 'Licks your face paw at your fat belly, for present belly, scratch hand when stroked. Fall over dead (not really but gets sypathy) lie in the sink all day or jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub.',
+    challenge: "Thinking longingly about tuna brine kitty poochy sleep in the bathroom sink and kitten is playing with dead mouse so tuxedo cats always looking dapper give attitude. Caticus cuteicus pee in human's bed until he cleans the litter box. Kitten is playing with dead mouse vommit food and eat it again. Wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again sit in window and stare ooo, a bird! yum lounge in doorway or ask for petting but destroy couch eat from dog's food. Meow loudly just to annoy owners give.",
+    images: [
+      '1.jpg',
+      '1.jpg',
+      '1.jpg',
+      '1.jpg'
+    ]
   },
   {
     id: 6,
-    name: 'Dragon Drop 6',
-    description: 'Digital Concept, Design, UI/UX, Development',
-    preview_image: '1.jpg'
+    title: 'Dragon Drop 6',
+    subtitle: 'Digital Concept, Design, UI/UX, Development',
+    preview_image: '1.jpg',
+    live: 'http://website.com',
+    description: 'Licks your face paw at your fat belly, for present belly, scratch hand when stroked. Fall over dead (not really but gets sypathy) lie in the sink all day or jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub.',
+    challenge: "Thinking longingly about tuna brine kitty poochy sleep in the bathroom sink and kitten is playing with dead mouse so tuxedo cats always looking dapper give attitude. Caticus cuteicus pee in human's bed until he cleans the litter box. Kitten is playing with dead mouse vommit food and eat it again. Wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again sit in window and stare ooo, a bird! yum lounge in doorway or ask for petting but destroy couch eat from dog's food. Meow loudly just to annoy owners give.",
+    images: [
+      '1.jpg',
+      '1.jpg',
+      '1.jpg',
+      '1.jpg'
+    ]
   },
   {
     id: 7,
-    name: 'Dragon Drop 7',
-    description: 'Digital Concept, Design, UI/UX, Development',
-    preview_image: '1.jpg'
+    title: 'Dragon Drop 7',
+    subtitle: 'Digital Concept, Design, UI/UX, Development',
+    preview_image: '1.jpg',
+    live: 'http://website.com',
+    description: 'Licks your face paw at your fat belly, for present belly, scratch hand when stroked. Fall over dead (not really but gets sypathy) lie in the sink all day or jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub.',
+    challenge: "Thinking longingly about tuna brine kitty poochy sleep in the bathroom sink and kitten is playing with dead mouse so tuxedo cats always looking dapper give attitude. Caticus cuteicus pee in human's bed until he cleans the litter box. Kitten is playing with dead mouse vommit food and eat it again. Wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again sit in window and stare ooo, a bird! yum lounge in doorway or ask for petting but destroy couch eat from dog's food. Meow loudly just to annoy owners give.",
+    images: [
+      '1.jpg',
+      '1.jpg',
+      '1.jpg',
+      '1.jpg'
+    ]
   },
   {
     id: 8,
-    name: 'Dragon Drop 8',
-    description: 'Digital Concept, Design, UI/UX, Development',
-    preview_image: '1.jpg'
+    title: 'Dragon Drop 8',
+    subtitle: 'Digital Concept, Design, UI/UX, Development',
+    preview_image: '1.jpg',
+    live: 'http://website.com',
+    description: 'Licks your face paw at your fat belly, for present belly, scratch hand when stroked. Fall over dead (not really but gets sypathy) lie in the sink all day or jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub.',
+    challenge: "Thinking longingly about tuna brine kitty poochy sleep in the bathroom sink and kitten is playing with dead mouse so tuxedo cats always looking dapper give attitude. Caticus cuteicus pee in human's bed until he cleans the litter box. Kitten is playing with dead mouse vommit food and eat it again. Wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again sit in window and stare ooo, a bird! yum lounge in doorway or ask for petting but destroy couch eat from dog's food. Meow loudly just to annoy owners give.",
+    images: [
+      '1.jpg',
+      '1.jpg',
+      '1.jpg',
+      '1.jpg'
+    ]
   },
   {
     id: 9,
-    name: 'Dragon Drop 9',
-    description: 'Digital Concept, Design, UI/UX, Development',
-    preview_image: '1.jpg'
+    title: 'Dragon Drop 9',
+    subtitle: 'Digital Concept, Design, UI/UX, Development',
+    preview_image: '1.jpg',
+    live: 'http://website.com',
+    description: 'Licks your face paw at your fat belly, for present belly, scratch hand when stroked. Fall over dead (not really but gets sypathy) lie in the sink all day or jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub.',
+    challenge: "Thinking longingly about tuna brine kitty poochy sleep in the bathroom sink and kitten is playing with dead mouse so tuxedo cats always looking dapper give attitude. Caticus cuteicus pee in human's bed until he cleans the litter box. Kitten is playing with dead mouse vommit food and eat it again. Wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again sit in window and stare ooo, a bird! yum lounge in doorway or ask for petting but destroy couch eat from dog's food. Meow loudly just to annoy owners give.",
+    images: [
+      '1.jpg',
+      '1.jpg',
+      '1.jpg',
+      '1.jpg'
+    ]
   },
   {
     id: 10,
-    name: 'Dragon Drop 10',
-    description: 'Digital Concept, Design, UI/UX, Development',
-    preview_image: '1.jpg'
+    title: 'Dragon Drop 10',
+    subtitle: 'Digital Concept, Design, UI/UX, Development',
+    preview_image: '1.jpg',
+    live: 'http://website.com',
+    description: 'Licks your face paw at your fat belly, for present belly, scratch hand when stroked. Fall over dead (not really but gets sypathy) lie in the sink all day or jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub.',
+    challenge: "Thinking longingly about tuna brine kitty poochy sleep in the bathroom sink and kitten is playing with dead mouse so tuxedo cats always looking dapper give attitude. Caticus cuteicus pee in human's bed until he cleans the litter box. Kitten is playing with dead mouse vommit food and eat it again. Wake up wander around the house making large amounts of noise jump on top of your human's bed and fall asleep again sit in window and stare ooo, a bird! yum lounge in doorway or ask for petting but destroy couch eat from dog's food. Meow loudly just to annoy owners give.",
+    images: [
+      '1.jpg',
+      '1.jpg',
+      '1.jpg',
+      '1.jpg'
+    ]
   }
 ]
 

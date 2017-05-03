@@ -16,9 +16,9 @@
             :class="{'previous': index < slideIndex, 'active': index === slideIndex, 'next': index > slideIndex }")
             router-link(:to="'/portfolio/' + slide.id")
               .slider-item__name
-                | {{ slide.name }}
+                | {{ slide.title }}
               .slider-item__description
-                | {{ slide.description }}
+                | {{ slide.subtitle }}
               img(:src="'/static/portfolio/' + slide.preview_image")
 </template>
 
