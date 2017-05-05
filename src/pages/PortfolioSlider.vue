@@ -9,7 +9,7 @@
       .slider(ref="slider")
         // .slider-prev(@click="onSlide(prev, slides)")
         // .slider-next(@click="onSlide(next, slides)")
-        .slider-content(:style="{width: slidesWidth + 'px', transform: 'translate3d(' + translateOffset  + 'px,0,0)'}")
+        .slider-content(@click="sidesClick", :style="{width: slidesWidth + 'px', transform: 'translate3d(' + translateOffset  + 'px,0,0)'}")
           .slider-item(
             ref="slideWidth"
             v-for="slide, index in slides",
@@ -51,13 +51,11 @@ export default {
 
     window.addEventListener('keydown', this.slideOnKey)
     window.addEventListener('mousemove', this.changeCursorOnMove)
-    window.addEventListener('click', this.sidesClick)
   },
 
   destroyed () {
     window.removeEventListener('keydown', this.slideOnKey)
     window.removeEventListener('mousemove', this.changeCursorOnMove)
-    window.removeEventListener('click', this.sidesClick)
   },
 
   methods: {
@@ -243,10 +241,6 @@ export default {
     a {
       text-decoration: none;
     }
-
-    // &:hover {
-    //   transform: scale(1.07);
-    // }
 
     &.previous {
       pointer-events: none;
