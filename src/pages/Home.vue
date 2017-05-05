@@ -1,9 +1,11 @@
 <template lang="pug">
   .page.home
-    .logo
+    home-canvas
 </template>
 
 <script>
+import HomeCanvas from '@/components/HomeCanvas'
+
 export default {
   name: 'Home',
   data () {
@@ -16,26 +18,25 @@ export default {
   },
 
   components: {
-
+    HomeCanvas
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .home {
-    background: url('../assets/home.svg') no-repeat center / cover;
 
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
   }
 
-  .logo {
-    background: url('../assets/logo.svg') no-repeat center / contain;
-    width: 300px;
-    height: 145px;
-
-    margin-bottom: 150px;
+  @keyframes backgroundGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 </style>

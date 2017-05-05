@@ -203,7 +203,7 @@ export default {
   .home {
     .header-link__portfolio .header-link__text,
     .header-link__contact .header-link__text {
-      color: #FFF;
+      color: #000;
     }
 
     .svg-home {
@@ -217,15 +217,15 @@ export default {
     }
 
     .svg-portfolio {
-      stroke: #FFF !important;
+      stroke: #000 !important;
     }
 
     .svg-contact path {
-      stroke: #FFF;
+      stroke: #000;
     }
 
     .header-link__home:hover use:last-child {
-      stroke: #FFF;
+      stroke: #000;
     }
 
     .header-link__logo {
