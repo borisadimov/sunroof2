@@ -57,28 +57,23 @@
             </svg>
         </div>
       </div>
+      <text-writer></text-writer>
   </div>
 
 </template>
 
 <script>
-//  <section class="cd-intro text-crawl">
-//   <h1 class="cd-headline letters type">
-//     <span>A collective of</span>
-//     <span class="cd-words-wrapper waiting">
-//       <p class="is-visible">design-obsessed digital junkies</p>
-//       <p>sometimes really cool people</p>
-//       <p>people who fill out this sentence</p>
-//     </span>
-//   </h1>
-// </section>
-import $ from 'jquery'
+import TextWriter from './TextWriter'
 
 export default {
   name: 'HomeCanvas',
   data () {
     return {
-
+      arrayOfSentences: [
+        'design-obsessed digital junkies',
+        'sometimes really cool people',
+        'people who fill out this sentence'
+      ]
     }
   },
 
@@ -229,142 +224,6 @@ export default {
       }
     }
 
-    function initText () {
-      // set animation timing
-      var animationDelay = 5500
-      // letters effect
-      var lettersDelay = 50
-      // type effect
-      var typeLettersDelay = 50
-      var selectionDuration = 500
-      var typeAnimationDelay = selectionDuration + 800
-      // clip effect
-      var revealDuration = 600
-      var revealAnimationDelay = 1500
-
-      function singleLetters ($words) {
-        $words.each(function () {
-          var word = $(this)
-          var letters = word.text().split('')
-          var selected = word.hasClass('is-visible')
-
-          for (var i in letters) {
-            letters[i] = (selected) ? '<i class="in">' + letters[i] + '</i>' : '<i>' + letters[i] + '</i>'
-          }
-
-          var newLetters = letters.join('')
-          word.html(newLetters).css('opacity', 1)
-        })
-      }
-
-      function animateHeadline ($headlines) {
-        var duration = animationDelay
-        $headlines.each(function () {
-          var headline = $(this)
-
-          if (!headline.hasClass('type')) {
-            // assign to .cd-words-wrapper the width of its longest word
-            var words = headline.find('.cd-words-wrapper p')
-            var width = 0
-
-            words.each(function () {
-              var wordWidth = $(this).width()
-              if (wordWidth > width) width = wordWidth
-            })
-
-            headline.find('.cd-words-wrapper').css('width', width)
-          }
-
-          // trigger animation
-          setTimeout(function () { hideWord(headline.find('.is-visible').eq(0)) }, duration)
-        })
-      }
-
-      function hideWord ($word) {
-        var nextWord = takeNext($word)
-
-        if ($word.parents('.cd-headline').hasClass('type')) {
-          var parentSpan = $word.parent('.cd-words-wrapper')
-          parentSpan.addClass('selected').removeClass('waiting')
-
-          setTimeout(function () {
-            parentSpan.removeClass('selected')
-            $word.removeClass('is-visible').addClass('is-hidden').children('i').removeClass('in').addClass('out')
-          }, selectionDuration)
-
-          setTimeout(function () { showWord(nextWord, typeLettersDelay) }, typeAnimationDelay)
-        } else if ($word.parents('.cd-headline').hasClass('letters')) {
-          // var bool = ($word.children('i').length >= nextWord.children('i').length) ? true : false
-          var bool = ($word.children('i').length >= nextWord.children('i').length)
-          hideLetter($word.find('i').eq(0), $word, bool, lettersDelay)
-          showLetter(nextWord.find('i').eq(0), nextWord, bool, lettersDelay)
-        } else if ($word.parents('.cd-headline').hasClass('clip')) {
-          $word.parents('.cd-words-wrapper').animate({ width: '2px' }, revealDuration, function () {
-            switchWord($word, nextWord)
-            showWord(nextWord)
-          })
-        } else {
-          switchWord($word, nextWord)
-          setTimeout(function () { hideWord(nextWord) }, animationDelay)
-        }
-      }
-
-      function showWord ($word, $duration) {
-        if ($word.parents('.cd-headline').hasClass('type')) {
-          showLetter($word.find('i').eq(0), $word, false, $duration)
-          $word.addClass('is-visible').removeClass('is-hidden')
-        } else if ($word.parents('.cd-headline').hasClass('clip')) {
-          $word.parents('.cd-words-wrapper').animate({ 'width': $word.width() + 10 }, revealDuration, function () {
-            setTimeout(function () { hideWord($word) }, revealAnimationDelay)
-          })
-        }
-      }
-
-      function hideLetter ($letter, $word, $bool, $duration) {
-        $letter.removeClass('in').addClass('out')
-
-        if (!$letter.is(':last-child')) {
-          setTimeout(function () { hideLetter($letter.next(), $word, $bool, $duration) }, $duration)
-        } else if ($bool) {
-          setTimeout(function () { hideWord(takeNext($word)) }, animationDelay)
-        }
-
-        if ($letter.is(':last-child') && $('html').hasClass('no-csstransitions')) {
-          var nextWord = takeNext($word)
-          switchWord($word, nextWord)
-        }
-      }
-
-      function showLetter ($letter, $word, $bool, $duration) {
-        $letter.addClass('in').removeClass('out')
-
-        if (!$letter.is(':last-child')) {
-          setTimeout(function () { showLetter($letter.next(), $word, $bool, $duration) }, $duration)
-        } else {
-          if ($word.parents('.cd-headline').hasClass('type')) { setTimeout(function () { $word.parents('.cd-words-wrapper').addClass('waiting') }, 200) }
-          if (!$bool) { setTimeout(function () { hideWord($word) }, animationDelay) }
-        }
-      }
-
-      function takeNext ($word) {
-        return (!$word.is(':last-child')) ? $word.next() : $word.parent().children().eq(0)
-      }
-
-      function switchWord ($oldWord, $newWord) {
-        $oldWord.removeClass('is-visible').addClass('is-hidden')
-        $newWord.removeClass('is-hidden').addClass('is-visible')
-      }
-
-      function initHeadline () {
-        // insert <i> element for each letter of a changing word
-        singleLetters($('.cd-headline.letters').find('p'))
-        // initialise headline animation
-        animateHeadline($('.cd-headline'))
-      }
-
-      initHeadline()
-    }
-
     var canvas = document.getElementById('canvas')
     var context = canvas.getContext('2d')
     var canvasWidth = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth)
@@ -378,49 +237,15 @@ export default {
     var worldIsPaused = false
     var birthToGive = 25
 
-    window.onload = function () {
-      canvas.setAttribute('width', canvasWidth)
-      canvas.setAttribute('height', canvasHeight)
+    canvas.setAttribute('width', canvasWidth)
+    canvas.setAttribute('height', canvasHeight)
 
-      start()
-    }
+    start()
 
     function start () {
       canvas.style.display = 'block'
       instantiatePopulation()
       animate()
-
-      document.body.addEventListener('keydown', function (e) {
-        // +
-        if (e.keyCode === 107) {
-          let i = 0
-          while (i < persons.length) {
-            if (persons[i].speed < 5) persons[i].speed++
-            i++
-          }
-        }
-
-        // -
-        if (e.keyCode === 109) {
-          let i = 0
-          while (i < persons.length) {
-            if (persons[i].speed > 0) persons[i].speed--
-            i++
-          }
-        }
-
-        // spacebar
-        if (e.keyCode === 32) {
-          if (worldIsPaused) {
-            worldIsPaused = false
-            animate()
-            return
-          } else {
-            worldIsPaused = true
-            return
-          }
-        }
-      })
     }
 
     function instantiatePopulation () {
@@ -466,12 +291,10 @@ export default {
 
       if (u > 1) giveBirth(e, u - 1)
     }
-
-    initText()
   },
 
   components: {
-
+    TextWriter
   }
 }
 </script>
@@ -483,6 +306,9 @@ export default {
     animation: backgroundGradient 45s linear infinite;
     height: 100%;
     width: 100%;
+
+    transform: translate3d(0,0,0);
+    will-change: transform;
   }
 
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
@@ -684,153 +510,6 @@ export default {
       stroke-dashoffset: 289;
       animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
-
-  .cd-words-wrapper {
-    display: inline-block;
-    position: relative;
-    text-align: left;
-  }
-
-  .cd-words-wrapper b {
-    display: inline-block;
-    position: absolute;
-    white-space: nowrap;
-    left: 0;
-    top: 0;
-  }
-
-  .cd-words-wrapper b.is-visible {
-    position: relative;
-  }
-
-  .no-js .cd-words-wrapper b {
-    opacity: 0;
-  }
-
-  .no-js .cd-words-wrapper b.is-visible {
-    opacity: 1;
-  }
-
-
-
-  /* --------------------------------
-
-  xtype
-
-  -------------------------------- */
-  .cd-headline.type .cd-words-wrapper {
-    vertical-align: top;
-    overflow: hidden;
-  }
-
-  .cd-headline.type .cd-words-wrapper::after {
-    /* vertical pulsating cursor bar */
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    bottom: auto;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    height: 90%;
-    width: 1px;
-    background-color: rgba(255,255,255,0.7);
-  }
-
-  .cd-headline.type .cd-words-wrapper.waiting::after {
-    -webkit-animation: cd-pulse 1s infinite;
-    -moz-animation: cd-pulse 1s infinite;
-    animation: cd-pulse 1s infinite;
-  }
-
-  .cd-headline.type .cd-words-wrapper.selected {
-    background-color: #95bc9a;
-  }
-
-  .cd-headline.type .cd-words-wrapper.selected::after {
-    visibility: hidden;
-  }
-
-  .cd-headline.type .cd-words-wrapper.selected b {
-    color: #0d0d0d;
-  }
-
-  .cd-headline.type b {
-    visibility: hidden;
-  }
-
-  .cd-headline.type b.is-visible {
-    visibility: visible;
-  }
-
-  .cd-headline.type i {
-    position: absolute;
-    visibility: hidden;
-  }
-
-  .cd-headline.type i.in {
-    position: relative;
-    visibility: visible;
-  }
-
-  @-webkit-keyframes cd-pulse {
-    0% {
-      -webkit-transform: translateY(-50%) scale(1);
-      opacity: 1;
-    }
-    40% {
-      -webkit-transform: translateY(-50%) scale(0.9);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateY(-50%) scale(0);
-      opacity: 0;
-    }
-  }
-  @-moz-keyframes cd-pulse {
-    0% {
-      -moz-transform: translateY(-50%) scale(1);
-      opacity: 1;
-    }
-    40% {
-      -moz-transform: translateY(-50%) scale(0.9);
-      opacity: 0;
-    }
-    100% {
-      -moz-transform: translateY(-50%) scale(0);
-      opacity: 0;
-    }
-  }
-  @keyframes cd-pulse {
-    0% {
-      -webkit-transform: translateY(-50%) scale(1);
-      -moz-transform: translateY(-50%) scale(1);
-      -ms-transform: translateY(-50%) scale(1);
-      -o-transform: translateY(-50%) scale(1);
-      transform: translateY(-50%) scale(1);
-      opacity: 1;
-    }
-    40% {
-      -webkit-transform: translateY(-50%) scale(0.9);
-      -moz-transform: translateY(-50%) scale(0.9);
-      -ms-transform: translateY(-50%) scale(0.9);
-      -o-transform: translateY(-50%) scale(0.9);
-      transform: translateY(-50%) scale(0.9);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateY(-50%) scale(0);
-      -moz-transform: translateY(-50%) scale(0);
-      -ms-transform: translateY(-50%) scale(0);
-      -o-transform: translateY(-50%) scale(0);
-      transform: translateY(-50%) scale(0);
-      opacity: 0;
-    }
-  }
-
 
   @-webkit-keyframes fadeInOut {
       0% {
