@@ -41,6 +41,11 @@
 <script>
 export default {
   name: 'Contact',
+
+  head: {
+    title: 'Sunroof | Contact'
+  },
+
   data () {
     return {
 

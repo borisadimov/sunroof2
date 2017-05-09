@@ -26,18 +26,22 @@
 
       .project-images
         .project-images__item(v-for="image in project.images")
-          img.project-image(:src="'/static/portfolio/' + image")
+          img.project-image(:src="'/portfolio/' + image")
 
       .project-footer
-        | Thank you. <router-link to="/portfolio">Portfolio</router-link>
+        | Thank you. <nuxt-link to="/portfolio">Portfolio</nuxt-link>
 
 </template>
 
 <script>
-import content from '@/config/fixtures'
+import content from '~assets/fixtures'
 
 export default {
   name: 'Project',
+
+  head: {
+    title: 'Sunroof | Project'
+  },
 
   computed: {
     project () {

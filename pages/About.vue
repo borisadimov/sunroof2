@@ -55,6 +55,11 @@
 <script>
 export default {
   name: 'About',
+
+  head: {
+    title: 'Sunroof | About'
+  },
+
   data () {
     return {
 

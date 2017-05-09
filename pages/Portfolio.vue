@@ -5,28 +5,31 @@
         :class="{'active': slideIndex === i}"
         @click="setSlide(i)"
         v-for="dot, i in slides")
-    .slider-container(ref="container", :class="{'cursorLeft': cursorLeft, 'cursorRight': cursorRight}")
+    .slider-container(@click="sidesClick" ref="container", :class="{'cursorLeft': cursorLeft, 'cursorRight': cursorRight}")
       .slider(ref="slider")
-        // .slider-prev(@click="onSlide(prev, slides)")
-        // .slider-next(@click="onSlide(next, slides)")
-        .slider-content(@click="sidesClick", :style="{width: slidesWidth + 'px', transform: 'translate3d(' + translateOffset  + 'px,0,0)'}")
+        .slider-content(:style="{width: slidesWidth + 'px', transform: 'translate3d(' + translateOffset  + 'px,0,0)'}")
           .slider-item(
             ref="slideWidth"
             v-for="slide, index in slides",
             :class="{'previous': index < slideIndex, 'active': index === slideIndex, 'next': index > slideIndex }")
-            router-link(:to="'/portfolio/' + slide.id")
+            nuxt-link(:to="'/portfolio/' + slide.id")
               .slider-item__name
                 | {{ slide.title }}
               .slider-item__description
                 | {{ slide.subtitle }}
-              img(:src="'/static/portfolio/' + slide.preview_image")
+              img(:src="'/portfolio/' + slide.preview_image")
 </template>
 
 <script>
-import content from '@/config/fixtures'
+import content from '~assets/fixtures'
 
 export default {
   name: 'Portfolio',
+
+  head: {
+    title: 'Sunroof | Portfolio'
+  },
+
   data () {
     return {
       buttonsBlocked: false,

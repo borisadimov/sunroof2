@@ -57,6 +57,7 @@
             </svg>
         </div>
       </div>
+
       <text-writer></text-writer>
   </div>
 
@@ -311,11 +312,23 @@ export default {
     will-change: transform;
   }
 
+   @keyframes backgroundGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
 
   @font-face {
     font-family: 'Fairview';
-    src: url('../../static/fonts/Fairview_SmallCaps.otf');
+    src: url('~static/fonts/Fairview_SmallCaps.otf');
   }
 
   html, body, div, span, applet, object, iframe,

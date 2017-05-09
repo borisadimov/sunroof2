@@ -1,50 +1,64 @@
 <template lang="pug">
-  #app(:class="$route.name.toLowerCase()")
+  nuxt-container#app(:class="$route.name.toLowerCase()")
     transition(name="color" appear)
-      router-link.header-link.header-link__home(to="/")
+      nuxt-link.header-link.header-link__home(to="/")
         svgicon.svg-home(icon="home" width="18" height="19")
         .header-link__text
           | Home
 
     transition(name="color" appear)
-      router-link.header-link.header-link__logo(to="/" v-if="$route.name.toLowerCase() !== 'home'")
+      nuxt-link.header-link.header-link__logo(to="/" v-if="$route.name.toLowerCase() !== 'home'")
         svgicon.svg-logo(icon="logo" width="40" height="40")
 
     transition(name="color" appear)
-      router-link.header-link.header-link__about(to="/about")
+      nuxt-link.header-link.header-link__about(to="/about")
         .header-link__text
           | About
         svgicon.svg-about(icon="about" width="18" height="18")
 
     transition(name="color" appear)
-      router-link.header-link.header-link__portfolio(to="/portfolio")
+      nuxt-link.header-link.header-link__portfolio(to="/portfolio")
         svgicon.svg-portfolio(icon="portfolio" width="36" height="24")
         .header-link__text
           | Portfolio
+
     transition(name="color" appear)
-      router-link.header-link.header-link__contact(to="/contact")
+      nuxt-link.header-link.header-link__contact(to="/contact")
         .header-link__text
           | Contact
         svgicon.svg-contact(icon="contact" width="24" height="24px")
 
-    transition(name="fade" appear)
-      router-view
+    nuxt
 </template>
-
 <script>
-import '@/components/Navigation/icons'
+if (process.BROWSER_BUILD) {
+  require('~/components/Navigation')
+}
+
+import svgicon from 'vue-svgicon/component/svgicon'
 
 export default {
-  name: 'app'
+  components: {
+    svgicon
+  }
 }
+
 </script>
-
 <style lang="scss">
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
-  @import url('normalize.css');
-
   * {
     box-sizing: border-box;
+  }
+
+  .page-enter-active, .page-leave-active {
+    transition: opacity .5s ease;
+  }
+
+  .page-enter-active {
+    transition-delay: .5s;
+  }
+
+  .page-enter, .page-leave-active {
+    opacity: 0;
   }
 
   #app {
@@ -67,7 +81,6 @@ export default {
     width: 100%;
     min-height: 700px;
     height: 100vh;
-    opacity: 0.999;
   }
 
   .fade-enter-active, .fade-leave-active {
@@ -133,21 +146,26 @@ export default {
     .svg-home {
       fill: transparent !important;
 
-      use:first-child {
-        opacity: 0;
-        transition: opacity .2s ease;
-        will-change: opacity;
+      path {
+        fill: #000;
+        transition: fill .2s ease;
+        will-change: fill;
       }
 
-      use:last-child {
-        transition: stroke .2s ease;
-        will-change: stroke;
+      circle {
+        fill: transparent;
+        transition: fill .2s ease;
+        will-change: fill;
       }
     }
 
     &:hover .svg-home {
-      use:first-child {
-        opacity: 1;
+      path {
+        fill: none;
+      }
+
+      circle {
+        fill: #000;
       }
     }
   }
@@ -200,7 +218,7 @@ export default {
     }
   }
 
-  .home {
+  .index {
     .header-link__portfolio .header-link__text,
     .header-link__contact .header-link__text {
       color: #000;
@@ -225,7 +243,7 @@ export default {
     }
 
     .header-link__home:hover use:last-child {
-      stroke: #000;
+      stroke: #f8e5c1;
     }
 
     .header-link__logo {
@@ -234,7 +252,7 @@ export default {
   }
 
   .portfolio,
-  .project {
+  .portfolio-id {
     .header-link__logo {
       color: #F48E5C;
     }
@@ -279,12 +297,9 @@ export default {
     }
 
     .svg-home {
-      use:last-child {
-        stroke: #FFFFFF;
-      }
-
-      use:first-child {
-        stroke: #FFFFFF;
+      path {
+        stroke: #FFF;
+        fill: #FFF;
       }
     }
 
@@ -321,6 +336,14 @@ export default {
 
     opacity: 0.001;
     transform: translate3d(-100%,0,0);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    will-change: transform, opacity;
+  }
+
+  .header-link__about .header-link__text,
+  .header-link__contact .header-link__text {
+    opacity: 0.001;
+    transform: translate3d(100%,0,0);
     transition: opacity 0.2s ease, transform 0.2s ease;
     will-change: transform, opacity;
   }

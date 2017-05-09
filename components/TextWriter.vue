@@ -1,9 +1,9 @@
-<template>
+<template lang="pug">
   <div class="text-writer">
     <section class="cd-intro text-crawl">
       <h1 class="cd-headline letters type">
-        <span>A collective of</span>
-          <span class="cd-words-wrapper">
+        <span>A collective of </span>
+        <span class="cd-words-wrapper">
           <vue-typer :shuffle="true" :text="arrayOfSentences"></vue-typer>
         </span>
       </h1>
@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import { VueTyper } from 'vue-typer'
+var VueTyper = process.BROWSER_BUILD
+  ? VueTyper = require('vue-typer').VueTyper : ''
 
 export default {
   name: 'HomeCanvas',
@@ -39,7 +40,7 @@ export default {
 <style lang="scss">
   @font-face {
     font-family: 'Fairview';
-    src: url('../../static/fonts/Fairview_SmallCaps.otf');
+    src: url('~static/fonts/Fairview_SmallCaps.otf');
   }
 
   .text-writer {
