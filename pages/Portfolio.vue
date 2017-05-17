@@ -194,7 +194,7 @@ export default {
   }
 
   .slider-dots {
-    width: 40%;
+    width: 25%;
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -211,7 +211,7 @@ export default {
   .slider-dots__dot {
     cursor: pointer;
     flex: 1;
-    height: 5px;
+    height: 3px;
 
     background: rgba(11, 30, 38, 0.2);
     transition: background .2s ease;
@@ -257,7 +257,6 @@ export default {
   }
 
   .slider-item img {
-    max-height: 375px;
     height: 100%;
   }
 
