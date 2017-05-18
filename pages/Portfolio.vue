@@ -258,6 +258,7 @@ export default {
 
   .slider-item img {
     height: 100%;
+    width: 600px;
   }
 
   .slider-item__name {
