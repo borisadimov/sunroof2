@@ -67,7 +67,7 @@ export default {
       margin-left: -15px;
       font-family: 'Source Sans Pro', sans-serif;
       font-size: 12px;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,1);
       -webkit-animation: fadeIn 2s 10s;
       -moz-animation: fadeIn 2s 10s;
       animation: fadeIn 2s;

@@ -95,9 +95,9 @@ export default {
   }
 
   .subtitle {
-    font-size: 12px;
+    font-size: 14px;
     color: #FFFFFF;
-    line-height: 18px;
+    line-height: 20px;
     max-width: 500px;
   }
 
@@ -124,22 +124,22 @@ export default {
   }
 
   .skills-item {
-    margin-bottom: 17px;
+    margin-bottom: 20px;
     flex: 0 0 50%;
   }
 
   .skills-item__title {
     margin-bottom: 11px;
 
-    font-size: 14px;
+    font-size: 16px;
     color: #818181;
   }
 
   .skills-item__skill {
-    font-size: 12px;
+    font-size: 14px;
     color: #FFFFFF;
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 20px;
   }
 
 </style>

@@ -23,7 +23,7 @@
           .info-item__title
             | Visit us
           .info-item__field
-            | Sunny
+            | Sunny California
           .info-item__field
             | Los Angeles, CA
 
@@ -99,7 +99,7 @@ export default {
   .info-item__title {
     margin-bottom: 11px;
 
-    font-size: 14px;
+    font-size: 16px;
     color: #818181;
   }
 
@@ -107,9 +107,9 @@ export default {
     display: block;
     text-decoration: none;
 
-    font-size: 12px;
+    font-size: 14px;
     color: #FFFFFF;
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 20px;
   }
 </style>
