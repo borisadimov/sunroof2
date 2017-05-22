@@ -31,9 +31,9 @@
           .info-item__title
             | Stalk us
           a.info-item__field(href="#")
-            | Facebook
+            | Behance
           a.info-item__field(href="#")
-            | Twitter
+            | Dribbble
           a.info-item__field(href="#")
             | Instagram
 </template>

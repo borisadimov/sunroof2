@@ -173,16 +173,15 @@ export default {
   .header-link__about {
     .svg-about {
       fill: transparent !important;
+      transform: rotate(-90deg);
+      transition: transform .2s ease;
+      will-change: transform;
+
     }
 
-    .svg-about path:last-child {
-      opacity: 0;
-      transition: opacity .2s ease;
-      will-change: opacity;
-    }
+    &:hover .svg-about  {
+      transform: initial;
 
-    &:hover path:last-child {
-      opacity: 1;
     }
   }
 
@@ -219,10 +218,6 @@ export default {
   }
 
   .index {
-    .header-link__portfolio .header-link__text,
-    .header-link__contact .header-link__text {
-      color: #000;
-    }
 
     .svg-home {
       use:last-child {
@@ -255,11 +250,6 @@ export default {
   .portfolio-id {
     .header-link__logo {
       color: #F48E5C;
-    }
-
-    .header-link__portfolio .header-link__text,
-    .header-link__contact .header-link__text {
-      color: #000;
     }
 
     .svg-home {

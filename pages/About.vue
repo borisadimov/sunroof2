@@ -124,7 +124,7 @@ export default {
   }
 
   .skills-item {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     flex: 0 0 50%;
   }
 
