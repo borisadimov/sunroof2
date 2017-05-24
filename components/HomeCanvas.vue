@@ -301,6 +301,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  canvas {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
   .home-canvas {
     background: linear-gradient(135deg, #f8e5c1, #F9CEA2, #F7AA78, #95bc9a, #2f626d);
     background-size: 200% 200%;
