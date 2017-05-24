@@ -90,6 +90,7 @@ export default {
   @media (max-width: 768px) {
     .page {
       height: auto;
+      min-height: 100vh;
     }
 
     .container {
