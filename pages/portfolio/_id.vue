@@ -86,7 +86,7 @@ export default {
   }
 
   .project-images__item {
-    margin-bottom: 50px;
+    margin-bottom: 100px;
   }
 
   .project-item__label {
@@ -127,6 +127,12 @@ export default {
       font-weight: bold;
       text-decoration: none;
       color: rgba(0,0,0,0.70);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .project-images__item {
+      margin-bottom: 50px;
     }
   }
 </style>
