@@ -12,12 +12,15 @@
             ref="slideWidth"
             v-for="slide, index in slides",
             :class="{'previous': index < slideIndex, 'active': index === slideIndex, 'next': index > slideIndex }")
-            nuxt-link(:to="'/portfolio/' + slide.id")
-              .slider-item__name
-                | {{ slide.title }}
-              .slider-item__description
-                | {{ slide.subtitle }}
-              img(:src="'/portfolio/' + slide.preview_image")
+            .slider-item__inner
+              nuxt-link(:to="'/portfolio/' + slide.id")
+                .slider-item__name
+                  | {{ slide.title }}
+              nuxt-link.slider-item__margin(:to="'/portfolio/' + slide.id")
+                .slider-item__description
+                  | {{ slide.subtitle }}
+              nuxt-link(:to="'/portfolio/' + slide.id")
+                img(:src="'/portfolio/' + slide.preview_image")
 </template>
 
 <script>
@@ -267,6 +270,17 @@ export default {
     width: 600px;
   }
 
+  .slider-item__inner {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slider-item__margin {
+    margin-bottom: 40px;
+  }
+
   .slider-item__name {
     margin-bottom: 10px;
 
@@ -277,8 +291,6 @@ export default {
   }
 
   .slider-item__description {
-    margin-bottom: 40px;
-
     font-size: 12px;
     color: rgba(0, 0, 0, 0.40);
     letter-spacing: 0;
