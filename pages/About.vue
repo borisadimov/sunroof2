@@ -142,4 +142,23 @@ export default {
     line-height: 20px;
   }
 
+  @media (max-width: 768px) {
+    .skills {
+      margin-top: 30px;
+    }
+
+    .skills-list {
+      width: 100%;
+    }
+
+    .skills-item__skill {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    .skills-list {
+      display: block;
+    }
+  }
 </style>

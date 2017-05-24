@@ -106,6 +106,10 @@ export default {
     text-decoration: none;
   }
 
+  .project-item {
+    margin-bottom: 50px;
+  }
+
   .project-images {
     width: 100%;
   }
