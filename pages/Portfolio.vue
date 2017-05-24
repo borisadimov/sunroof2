@@ -269,6 +269,8 @@ export default {
     color: rgba(0, 0, 0, 0.70);
     letter-spacing: 2.2px;
     text-transform: uppercase;
+
+    display: inline-block;
   }
 
   .slider-item__description {
@@ -278,6 +280,8 @@ export default {
     color: rgba(0, 0, 0, 0.40);
     letter-spacing: 0;
     line-height: 18px;
+
+    display: inline-block;
   }
 
   .slider-prev,
