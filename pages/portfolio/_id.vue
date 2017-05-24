@@ -138,5 +138,9 @@ export default {
     .project-images__item {
       margin-bottom: 50px;
     }
+
+    .project-item {
+      margin-bottom: 30px;
+    }
   }
 </style>

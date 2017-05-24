@@ -1,6 +1,6 @@
 <template lang="pug">
   .page.home
-    // home-canvas
+    home-canvas
 </template>
 
 <script>
