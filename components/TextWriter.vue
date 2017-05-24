@@ -16,7 +16,7 @@ var VueTyper = process.BROWSER_BUILD
   ? VueTyper = require('vue-typer').VueTyper : ''
 
 export default {
-  name: 'HomeCanvas',
+  name: 'TextWriter',
   data () {
     return {
       arrayOfSentences: [

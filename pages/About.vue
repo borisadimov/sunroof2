@@ -1,5 +1,6 @@
 <template lang="pug">
   .page.about
+    black-background
     .container
       .title
         | What is Sunroof?
@@ -53,6 +54,8 @@
 </template>
 
 <script>
+import BlackBackground from '~components/BlackBackground'
+
 export default {
   name: 'About',
 
@@ -67,14 +70,14 @@ export default {
   },
 
   components: {
-
+    BlackBackground
   }
 }
 </script>
 
 <style scoped lang="scss">
   .about {
-    background: rgba(36,36,36,0.95);
+    background: #242424;
   }
 
   .container {

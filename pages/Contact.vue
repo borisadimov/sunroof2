@@ -1,5 +1,6 @@
 <template lang="pug">
   .page.contact
+    black-background
     .container
       .title
         | We are avilable for
@@ -40,6 +41,7 @@
 </template>
 
 <script>
+import BlackBackground from '~components/BlackBackground'
 export default {
   name: 'Contact',
 
@@ -47,14 +49,8 @@ export default {
     title: 'Sunroof | Contact'
   },
 
-  data () {
-    return {
-
-    }
-  },
-
   components: {
-
+    BlackBackground
   }
 }
 </script>

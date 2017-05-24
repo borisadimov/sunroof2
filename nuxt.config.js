@@ -57,6 +57,6 @@ module.exports = {
       require('postcss-flexibility')()
     ],
 
-    vendor: ['normalize.css']
+    vendor: ['normalize.css', 'three-js']
   }
 }
