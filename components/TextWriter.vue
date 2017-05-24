@@ -94,4 +94,15 @@ export default {
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .text-writer .text-crawl {
+      text-align: center;
+      margin: 0;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+    }
+  }
 </style>
