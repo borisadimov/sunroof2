@@ -85,7 +85,7 @@ export default {
     max-width: 600px;
   }
 
-  .project-item {
+  .project-images__item {
     margin-bottom: 50px;
   }
 

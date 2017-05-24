@@ -9,7 +9,3 @@ body {
 .page-enter, .page-leave-active {
   opacity: 0;
 }
-
-.project-images__item {
-    padding-bottom: 100px;
-}

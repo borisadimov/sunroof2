@@ -106,6 +106,7 @@ export default {
     onSlide (func, slides) {
       if (this.canSlide) {
         this.canSlide = false
+        console.log(this.$refs.container.classList)
         this.$refs.container.classList.add('slider-container--sliding')
         func(slides)
 
