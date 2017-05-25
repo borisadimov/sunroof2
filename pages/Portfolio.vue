@@ -2,9 +2,9 @@
   .page.portfolio
     .slider-dots(ref="dots")
       .slider-dots__dot(
-        :class="{'active': slideIndex === i}"
         @click="setSlide(i)"
         v-for="dot, i in slides")
+      .slider-dots__dot.active(:style="{width: oneDotWidth / slides.length + 'px', transform: 'translateX(' + (oneDotWidth / slides.length * slideIndex) + 'px)'}")
     .slider-container(@click="sidesClick" ref="container", :class="{'cursorLeft': cursorLeft, 'cursorRight': cursorRight}")
       .slider(ref="slider")
         .slider-content(:style="{width: slidesWidth + 'px', transform: 'translate3d(' + translateOffset  + 'px,0,0)'}")
@@ -42,7 +42,8 @@ export default {
       slides: content,
       slidesWidth: null,
       cursorLeft: false,
-      cursorRight: false
+      cursorRight: false,
+      oneDotWidth: 0
     }
   },
 
@@ -53,6 +54,7 @@ export default {
   },
 
   mounted () {
+    this.oneDotWidth = (window.getComputedStyle(this.$refs.dots).width).replace('px', '')
     this.slidesWidth = this.getSlidesWidth()
 
     window.addEventListener('keydown', this.slideOnKey)
@@ -218,14 +220,17 @@ export default {
     height: 3px;
 
     background: rgba(11, 30, 38, 0.2);
-    transition: background .2s ease;
-    will-change: background;
+    transition: background .2s ease, transform 1s ease;
+    will-change: background, transform;
 
     &:hover {
       background: rgba(11, 30, 38, 0.4);
     }
 
     &.active {
+      position: absolute;
+      left: 0;
+      top: 0;
       background: #414042;
     }
   }

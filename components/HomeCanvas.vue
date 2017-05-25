@@ -236,7 +236,7 @@ export default {
     var persons = []
     var numberOfperson = (canvasWidth * canvasHeight <= 320000) ? 25 : 15
     var worldIsPaused = false
-    var birthToGive = 25
+    var birthToGive = 5
 
     canvas.setAttribute('width', canvasWidth)
     canvas.setAttribute('height', canvasHeight)
@@ -272,10 +272,18 @@ export default {
       })
 
       // Paint instances in sorted order
-      for (var i in personsOrder) {
-        var u = personsOrder[i].id
-        persons[u].nextAction()
+      for (let person of persons) {
+        if (person === undefined) {
+          console.log('skipped', person)
+          continue
+        }
+        person.nextAction()
       }
+      // for (var i in personsOrder) {
+      //   // var u = personsOrder[i].id
+      //   // persons[u].nextAction()
+      //   personsOrder[i].nextAction()
+      // }
 
       requestAnimationFrame(animate)
     }
@@ -285,12 +293,18 @@ export default {
     }
 
     function giveBirth (e, u) {
-      var i = persons.length
-      persons[i] = new Person(i)
-      persons[i].x = e.layerX
-      persons[i].y = e.layerY
+      if (persons.length > 200) {
+        persons = persons.slice(u)
+        // console.log(persons)
+      }
+      var k = persons.length
+      for (let i = 0; i < u; ++i) {
+        persons[i + k] = new Person(i)
+        persons[i + k].x = e.layerX
+        persons[i + k].y = e.layerY
+      }
 
-      if (u > 1) giveBirth(e, u - 1)
+      // if (u > 1) giveBirth(e, u - 1)
     }
   },
 
