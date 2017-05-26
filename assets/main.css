@@ -6,6 +6,10 @@ body {
   transition: opacity .5s ease;
 }
 
+.page-enter-active {
+  transition-delay: .5s;
+}
+
 .page-enter, .page-leave-active {
   opacity: 0;
 }

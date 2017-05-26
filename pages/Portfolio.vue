@@ -56,6 +56,9 @@ export default {
   mounted () {
     this.oneDotWidth = (window.getComputedStyle(this.$refs.dots).width).replace('px', '')
     this.slidesWidth = this.getSlidesWidth()
+    window.onresize = () => {
+      this.slidesWidth = this.getSlidesWidth()
+    }
 
     window.addEventListener('keydown', this.slideOnKey)
     window.addEventListener('mousemove', this.changeCursorOnMove)
@@ -200,7 +203,9 @@ export default {
   }
 
   .slider-dots {
-    width: 25%;
+    width: 250px;
+    background: rgba(11, 30, 38, 0.2);
+
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -218,8 +223,6 @@ export default {
     cursor: pointer;
     flex: 1;
     height: 3px;
-
-    background: rgba(11, 30, 38, 0.2);
     transition: background .2s ease, transform 1s ease;
     will-change: background, transform;
 
@@ -240,6 +243,7 @@ export default {
     transition: transform 1s ease;
     transform: translate3d(0, 0, 0);
     will-change: transform;
+    white-space: nowrap;
   }
 
   .slider-item {
@@ -250,6 +254,10 @@ export default {
     transition: transform 0.5s ease, opacity 1s ease;
     will-change: opacity, transform;
 
+    &:last-child {
+      margin-right: 0;
+    }
+
     a {
       text-decoration: none;
 
@@ -257,6 +265,8 @@ export default {
       flex-flow: column nowrap;
       justify-content: center;
       align-items: center;
+
+      padding: 0 30px;
     }
 
     &.previous {
@@ -272,7 +282,8 @@ export default {
 
   .slider-item img {
     height: 100%;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
   }
 
   .slider-item__inner {
