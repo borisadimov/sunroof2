@@ -236,7 +236,7 @@ export default {
     var persons = []
     var numberOfperson = (canvasWidth * canvasHeight <= 320000) ? 25 : 15
     var worldIsPaused = false
-    var birthToGive = 25
+    var birthToGive = 5
 
     canvas.setAttribute('width', canvasWidth)
     canvas.setAttribute('height', canvasHeight)
@@ -272,10 +272,18 @@ export default {
       })
 
       // Paint instances in sorted order
-      for (var i in personsOrder) {
-        var u = personsOrder[i].id
-        persons[u].nextAction()
+      for (let person of persons) {
+        if (person === undefined) {
+          console.log('skipped', person)
+          continue
+        }
+        person.nextAction()
       }
+      // for (var i in personsOrder) {
+      //   // var u = personsOrder[i].id
+      //   // persons[u].nextAction()
+      //   personsOrder[i].nextAction()
+      // }
 
       requestAnimationFrame(animate)
     }
@@ -285,12 +293,18 @@ export default {
     }
 
     function giveBirth (e, u) {
-      var i = persons.length
-      persons[i] = new Person(i)
-      persons[i].x = e.layerX
-      persons[i].y = e.layerY
+      if (persons.length > 200) {
+        persons = persons.slice(u)
+        // console.log(persons)
+      }
+      var k = persons.length
+      for (let i = 0; i < u; ++i) {
+        persons[i + k] = new Person(i)
+        persons[i + k].x = e.layerX
+        persons[i + k].y = e.layerY
+      }
 
-      if (u > 1) giveBirth(e, u - 1)
+      // if (u > 1) giveBirth(e, u - 1)
     }
   },
 
@@ -301,6 +315,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  canvas {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
   .home-canvas {
     background: linear-gradient(135deg, #f8e5c1, #F9CEA2, #F7AA78, #95bc9a, #2f626d);
     background-size: 200% 200%;
@@ -316,9 +334,11 @@ export default {
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
@@ -373,358 +393,239 @@ export default {
   text {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    -webkit-animation: draw 5s forwards;
-    -moz-animation: draw 5s forwards;
-    -o-animation: draw 5s forwards;
-    -ms-animation: draw 5s forwards;
     animation: draw 10s forwards;
   }
 
   .hide {
-    -webkit-animation: fadeInOut2 1s linear forwards;
-    -moz-animation: fadeInOut2 1s linear forwards;
-    -o-animation: fadeInOut2 1s linear forwards;
-    -ms-animation: fadeInOut2 1s linear forwards;
     animation: fadeInOut2 3s linear forwards;
   }
 
   .background {
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
   }
 
   .svg-wrapper {
-      display: block;
-      position: fixed;
-      top: 45%;
-      left: 50%;
-      margin-top: -70px;
-      margin-left: -110px;
+    display: block;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    margin-top: -70px;
+    margin-left: -110px;
   }
 
   .text-crawl {
-      display: block;
-      position: fixed;
-      letter-spacing: 1px;
-      top: 56%;
-      left: 40%;
-      margin-top: 0;
-      margin-left: -15px;
-      font-family: 'Source Sans Pro', sans-serif;
-      font-size: 12px;
-      color: rgba(255,255,255,0.7);
-      -webkit-animation: fadeIn 2s 10s;
-      -moz-animation: fadeIn 2s 10s;
-      animation: fadeIn 2s;
-      animation-delay: 2s;
-      -webkit-animation-fill-mode: forwards;
-      animation-fill-mode: forwards;
-      opacity: 0;
+    display: block;
+    position: fixed;
+    letter-spacing: 1px;
+    top: 56%;
+    left: 40%;
+    margin-top: 0;
+    margin-left: -15px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,1);
+    -webkit-animation: fadeIn 2s 10s;
+    -moz-animation: fadeIn 2s 10s;
+    animation: fadeIn 2s;
+    animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    opacity: 0;
   }
 
   /* logo */
 
   .name {
-      margin-top: 0;
-      margin-left: 0;
-      letter-spacing: 10px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -o-user-select: none;
-      user-select: none;
+    margin-top: 0;
+    margin-left: 0;
+    letter-spacing: 10px;
+    user-select: none;
   }
 
   .sunroof-white {
-      fill: rgba(255, 255, 255, 0.8);
-      opacity: 0;
-      -webkit-animation: fadeIn 2s ease;
-      -moz-animation: fadeIn 2s ease;
-      animation: fadeIn 2s ease;
-      -webkit-animation-delay: 2s;
-      -moz-animation-delay: 2s;
-      animation-delay: 1.5s;
-      -webkit-animation-fill-mode: forwards;
-      -moz-animation-fill-mode: forwards;
-      animation-fill-mode: forwards;
+    fill: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    animation: fadeIn 2s ease;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
   }
 
   .st0 {
-      opacity: 0.7;
+    opacity: 0.7;
   }
 
   .st1 {
-      fill: none;
-      stroke: #FFFFFF;
-      stroke-width: 4;
-      stroke-linejoin: bevel;
-      stroke-miterlimit: 10;
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-width: 4;
+    stroke-linejoin: bevel;
+    stroke-miterlimit: 10;
   }
 
   .XlDBzDyx_0 {
-      stroke-dasharray: 43 45;
-      stroke-dashoffset: 44;
-      animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
+    stroke-dasharray: 43 45;
+    stroke-dashoffset: 44;
+    animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
 
   .XlDBzDyx_1 {
-      stroke-dasharray: 0 2;
-      stroke-dashoffset: 1;
-      animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
+    stroke-dasharray: 0 2;
+    stroke-dashoffset: 1;
+    animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
 
   .XlDBzDyx_2 {
-      stroke-dasharray: 28 30;
-      stroke-dashoffset: 29;
-      animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
+    stroke-dasharray: 28 30;
+    stroke-dashoffset: 29;
+    animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
 
   .XlDBzDyx_3 {
-      stroke-dasharray: 27 29;
-      stroke-dashoffset: 28;
-      animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
+    stroke-dasharray: 27 29;
+    stroke-dashoffset: 28;
+    animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
 
   .XlDBzDyx_4 {
-      stroke-dasharray: 43 45;
-      stroke-dashoffset: 44;
-      animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
+    stroke-dasharray: 43 45;
+    stroke-dashoffset: 44;
+    animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
 
   .XlDBzDyx_5 {
-      stroke-dasharray: 0 2;
-      stroke-dashoffset: 1;
-      animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
+    stroke-dasharray: 0 2;
+    stroke-dashoffset: 1;
+    animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
 
   .XlDBzDyx_6 {
-      stroke-dasharray: 28 30;
-      stroke-dashoffset: 29;
-      animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
+    stroke-dasharray: 28 30;
+    stroke-dashoffset: 29;
+    animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
 
   .XlDBzDyx_7 {
-      stroke-dasharray: 27 29;
-      stroke-dashoffset: 28;
-      animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
+    stroke-dasharray: 27 29;
+    stroke-dashoffset: 28;
+    animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
 
   .XlDBzDyx_8 {
-      stroke-dasharray: 288 290;
-      stroke-dashoffset: 289;
-      animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
+    stroke-dasharray: 288 290;
+    stroke-dashoffset: 289;
+    animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
 
   .XlDBzDyx_9 {
-      stroke-dasharray: 288 290;
-      stroke-dashoffset: 289;
-      animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
-  }
-
-  @-webkit-keyframes fadeInOut {
-      0% {
-          opacity: 0;
-      }
-      50% {
-          opacity: 1;
-      }
-      100% {
-          opacity: 0;
-      }
-  }
-
-  @-moz-keyframes fadeInOut {
-      0% {
-          opacity: 0;
-      }
-      50% {
-          opacity: 1;
-      }
-      100% {
-          opacity: 0;
-      }
+    stroke-dasharray: 288 290;
+    stroke-dashoffset: 289;
+    animation: XlDBzDyx_draw 2500ms ease-in-out 0ms forwards;
   }
 
   @keyframes fadeInOut {
-      0% {
-          opacity: 0;
-      }
-      50% {
-          opacity: 1;
-      }
-      100% {
-          opacity: 0;
-      }
-  }
+    0% {
+      opacity: 0;
+    }
 
-  @-webkit-keyframes fadeOutIn {
-      0% {
-          opacity: 1;
-      }
-      50% {
-          opacity: 0;
-      }
-      100% {
-          opacity: 1;
-      }
-  }
+    50% {
+      opacity: 1;
+    }
 
-  @-moz-keyframes fadeOutIn {
-      0% {
-          opacity: 1;
-      }
-      50% {
-          opacity: 0;
-      }
-      100% {
-          opacity: 1;
-      }
+    100% {
+      opacity: 0;
+    }
   }
 
   @keyframes fadeOutIn {
-      0% {
-          opacity: 1;
-      }
-      50% {
-          opacity: 0;
-      }
-      100% {
-          opacity: 1;
-      }
-  }
+    0% {
+      opacity: 1;
+    }
 
-  @-webkit-keyframes fadeIn {
-      from {
-          opacity: 0;
-      }
-      to {
-          opacity: 1;
-      }
-  }
+    50% {
+      opacity: 0;
+    }
 
-  @-moz-keyframes fadeIn {
-      from {
-          opacity: 0;
-      }
-      to {
-          opacity: 1;
-      }
+    100% {
+      opacity: 1;
+    }
   }
 
   @keyframes fadeIn {
       from {
-          opacity: 0;
+        opacity: 0;
       }
       to {
-          opacity: 1;
-      }
-  }
-
-  @-webkit-keyframes fadeOut {
-      from {
-          opacity: 1;
-      }
-      to {
-          opacity: 0;
-      }
-  }
-
-  @-moz-keyframes fadeOut {
-      from {
-          opacity: 1;
-      }
-      to {
-          opacity: 0;
+        opacity: 1;
       }
   }
 
   @keyframes fadeOut {
-      from {
-          opacity: 1;
-      }
-      to {
-          opacity: 0;
-      }
-  }
+    from {
+      opacity: 1;
+    }
 
-  @-webkit-keyframes backgroundRotate {
-      0% {
-          transform: rotate(0deg);
-      }
-      50% {
-          transform: rotate(180deg);
-      }
-      100% {
-          transform: rotate(360deg);
-      }
-  }
-
-  @-moz-keyframes backgroundRotate {
-      0% {
-          transform: rotate(0deg);
-      }
-      50% {
-          transform: rotate(180deg);
-      }
-      100% {
-          transform: rotate(360deg);
-      }
+    to {
+      opacity: 0;
+    }
   }
 
   @keyframes backgroundRotate {
-      0% {
-          transform: rotate(0deg);
-      }
-      50% {
-          transform: rotate(180deg);
-      }
-      100% {
-          transform: rotate(360deg);
-      }
+    0% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(180deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   @keyframes draw {
-      100% {
-          stroke-dashoffset: 0;
-      }
-  }
-
-  @-webkit-keyframes fadeInOut2 {
-      0%, 100% {
-          opacity: 0;
-      }
-      50% {
-          opacity: 0.7;
-      }
+    100% {
+      stroke-dashoffset: 0;
+    }
   }
 
   @keyframes fadeInOut2 {
-      0%, 100% {
-          opacity: 0;
-      }
-      50% {
-          opacity: 0.7;
-      }
+    0%, 100% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 0.7;
+    }
   }
 
   @keyframes XlDBzDyx_draw {
-      100% {
-          stroke-dashoffset: 0;
-      }
+    100% {
+      stroke-dashoffset: 0;
+    }
   }
 
   @keyframes XlDBzDyx_fade {
-      0% {
-          stroke-opacity: 1;
-      }
-      93.33333333333333% {
-          stroke-opacity: 1;
-      }
-      100% {
-          stroke-opacity: 0;
-      }
+    0% {
+      stroke-opacity: 1;
+    }
+
+    93.33333333333333% {
+      stroke-opacity: 1;
+    }
+
+    100% {
+      stroke-opacity: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .svg-wrapper {
+      left: 56%;
+    }
   }
 </style>

@@ -7,7 +7,7 @@
           | Home
 
     transition(name="color" appear)
-      nuxt-link.header-link.header-link__logo(to="/" v-if="$route.name.toLowerCase() !== 'home'")
+      nuxt-link.header-link.header-link__logo(to="/" v-if="$route.name.toLowerCase() !== 'index'")
         svgicon.svg-logo(icon="logo" width="40" height="40")
 
     transition(name="color" appear)
@@ -40,6 +40,10 @@ import svgicon from 'vue-svgicon/component/svgicon'
 export default {
   components: {
     svgicon
+  },
+
+  mounted () {
+
   }
 }
 
@@ -83,6 +87,17 @@ export default {
     height: 100vh;
   }
 
+  @media (max-width: 768px) {
+    .page {
+      height: auto;
+      min-height: 100vh;
+    }
+
+    .container {
+      padding: 100px 30px;
+    }
+  }
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s ease;
   }
@@ -104,7 +119,6 @@ export default {
 
     display: flex;
     flex-flow: row nowrap;
-    align-items: center;
 
     color: initial;
     position: fixed;
@@ -142,6 +156,90 @@ export default {
     right: 30px;
   }
 
+  @media (max-width: 768px) {
+    .header-link__home {
+      top: 25px;
+      left: 15px;
+    }
+
+    .header-link__logo {
+      top: 15px;
+    }
+
+    .header-link__about {
+      top: 25px;
+      right: 15px;
+    }
+
+    .header-link__portfolio {
+      bottom: 15px;
+      left: 15px;
+    }
+
+    .header-link__contact {
+      bottom: 15px;
+      right: 15px;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .header-link {
+      height: 8vw;
+      width: 8vw;
+    }
+
+    .header-link__home {
+      top: 15px;
+      left: 15px;
+
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .header-link__text {
+        margin-top: 2px;
+      }
+    }
+
+    .header-link__logo {
+      top: 15px;
+
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .header-link__about {
+      top: 15px;
+      right: 15px;
+
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    .header-link__portfolio {
+      bottom: 15px;
+      left: 15px;
+
+      justify-content: flex-start;
+      align-items: flex-end;
+
+      .header-link__text {
+        margin-bottom: 5px;
+      }
+    }
+
+    .header-link__contact {
+      bottom: 15px;
+      right: 15px;
+
+      justify-content: flex-end;
+      align-items: flex-end;
+
+      .header-link__text {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
   .header-link__home {
     .svg-home {
       fill: transparent !important;
@@ -173,16 +271,15 @@ export default {
   .header-link__about {
     .svg-about {
       fill: transparent !important;
+      transform: rotate(-90deg);
+      transition: transform .2s ease;
+      will-change: transform;
+
     }
 
-    .svg-about path:last-child {
-      opacity: 0;
-      transition: opacity .2s ease;
-      will-change: opacity;
-    }
+    &:hover .svg-about  {
+      transform: initial;
 
-    &:hover path:last-child {
-      opacity: 1;
     }
   }
 
@@ -219,10 +316,6 @@ export default {
   }
 
   .index {
-    .header-link__portfolio .header-link__text,
-    .header-link__contact .header-link__text {
-      color: #000;
-    }
 
     .svg-home {
       use:last-child {
@@ -255,11 +348,6 @@ export default {
   .portfolio-id {
     .header-link__logo {
       color: #F48E5C;
-    }
-
-    .header-link__portfolio .header-link__text,
-    .header-link__contact .header-link__text {
-      color: #000;
     }
 
     .svg-home {

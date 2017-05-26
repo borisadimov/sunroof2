@@ -85,8 +85,8 @@ export default {
     max-width: 600px;
   }
 
-  .project-item {
-    margin-bottom: 50px;
+  .project-images__item {
+    margin-bottom: 100px;
   }
 
   .project-item__label {
@@ -104,6 +104,10 @@ export default {
     letter-spacing: 0;
     line-height: 18px;
     text-decoration: none;
+  }
+
+  .project-item {
+    margin-bottom: 50px;
   }
 
   .project-images {
@@ -127,6 +131,16 @@ export default {
       font-weight: bold;
       text-decoration: none;
       color: rgba(0,0,0,0.70);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .project-images__item {
+      margin-bottom: 50px;
+    }
+
+    .project-item {
+      margin-bottom: 30px;
     }
   }
 </style>

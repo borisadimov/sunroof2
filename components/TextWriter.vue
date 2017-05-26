@@ -16,7 +16,7 @@ var VueTyper = process.BROWSER_BUILD
   ? VueTyper = require('vue-typer').VueTyper : ''
 
 export default {
-  name: 'HomeCanvas',
+  name: 'TextWriter',
   data () {
     return {
       arrayOfSentences: [
@@ -67,7 +67,7 @@ export default {
       margin-left: -15px;
       font-family: 'Source Sans Pro', sans-serif;
       font-size: 12px;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,1);
       -webkit-animation: fadeIn 2s 10s;
       -moz-animation: fadeIn 2s 10s;
       animation: fadeIn 2s;
@@ -92,6 +92,17 @@ export default {
       .custom.caret {
         background-color: #FFFFFF;
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .text-writer .text-crawl {
+      text-align: center;
+      margin: 0;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
     }
   }
 </style>

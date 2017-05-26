@@ -15,6 +15,10 @@ module.exports = {
     ]
   },
 
+  plugins: [
+     { src: '~plugins/ga.js', ssr: false }
+  ],
+
   /*
   ** Default styles
   */
@@ -53,6 +57,6 @@ module.exports = {
       require('postcss-flexibility')()
     ],
 
-    vendor: ['normalize.css']
+    vendor: ['normalize.css', 'three-js']
   }
 }

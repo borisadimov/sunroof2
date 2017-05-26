@@ -2,9 +2,9 @@
   .page.portfolio
     .slider-dots(ref="dots")
       .slider-dots__dot(
-        :class="{'active': slideIndex === i}"
         @click="setSlide(i)"
         v-for="dot, i in slides")
+      .slider-dots__dot.active(:style="{width: oneDotWidth / slides.length + 'px', transform: 'translateX(' + (oneDotWidth / slides.length * slideIndex) + 'px)'}")
     .slider-container(@click="sidesClick" ref="container", :class="{'cursorLeft': cursorLeft, 'cursorRight': cursorRight}")
       .slider(ref="slider")
         .slider-content(:style="{width: slidesWidth + 'px', transform: 'translate3d(' + translateOffset  + 'px,0,0)'}")
@@ -12,12 +12,15 @@
             ref="slideWidth"
             v-for="slide, index in slides",
             :class="{'previous': index < slideIndex, 'active': index === slideIndex, 'next': index > slideIndex }")
-            nuxt-link(:to="'/portfolio/' + slide.id")
-              .slider-item__name
-                | {{ slide.title }}
-              .slider-item__description
-                | {{ slide.subtitle }}
-              img(:src="'/portfolio/' + slide.preview_image")
+            .slider-item__inner
+              nuxt-link(:to="'/portfolio/' + slide.id")
+                .slider-item__name
+                  | {{ slide.title }}
+              nuxt-link.slider-item__margin(:to="'/portfolio/' + slide.id")
+                .slider-item__description
+                  | {{ slide.subtitle }}
+              nuxt-link(:to="'/portfolio/' + slide.id")
+                img(:src="'/portfolio/' + slide.preview_image")
 </template>
 
 <script>
@@ -39,7 +42,8 @@ export default {
       slides: content,
       slidesWidth: null,
       cursorLeft: false,
-      cursorRight: false
+      cursorRight: false,
+      oneDotWidth: 0
     }
   },
 
@@ -50,6 +54,7 @@ export default {
   },
 
   mounted () {
+    this.oneDotWidth = (window.getComputedStyle(this.$refs.dots).width).replace('px', '')
     this.slidesWidth = this.getSlidesWidth()
 
     window.addEventListener('keydown', this.slideOnKey)
@@ -106,6 +111,7 @@ export default {
     onSlide (func, slides) {
       if (this.canSlide) {
         this.canSlide = false
+
         this.$refs.container.classList.add('slider-container--sliding')
         func(slides)
 
@@ -194,7 +200,7 @@ export default {
   }
 
   .slider-dots {
-    width: 40%;
+    width: 25%;
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -211,17 +217,20 @@ export default {
   .slider-dots__dot {
     cursor: pointer;
     flex: 1;
-    height: 5px;
+    height: 3px;
 
     background: rgba(11, 30, 38, 0.2);
-    transition: background .2s ease;
-    will-change: background;
+    transition: background .2s ease, transform 1s ease;
+    will-change: background, transform;
 
     &:hover {
       background: rgba(11, 30, 38, 0.4);
     }
 
     &.active {
+      position: absolute;
+      left: 0;
+      top: 0;
       background: #414042;
     }
   }
@@ -243,6 +252,11 @@ export default {
 
     a {
       text-decoration: none;
+
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
     }
 
     &.previous {
@@ -257,8 +271,19 @@ export default {
   }
 
   .slider-item img {
-    max-height: 375px;
     height: 100%;
+    width: 600px;
+  }
+
+  .slider-item__inner {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slider-item__margin {
+    margin-bottom: 40px;
   }
 
   .slider-item__name {
@@ -271,8 +296,6 @@ export default {
   }
 
   .slider-item__description {
-    margin-bottom: 40px;
-
     font-size: 12px;
     color: rgba(0, 0, 0, 0.40);
     letter-spacing: 0;
