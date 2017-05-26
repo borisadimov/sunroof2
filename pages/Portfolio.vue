@@ -33,6 +33,10 @@ export default {
     title: 'Sunroof | Portfolio'
   },
 
+  transition: {
+    name: 'portfolio'
+  },
+
   data () {
     return {
       buttonsBlocked: false,
@@ -56,12 +60,23 @@ export default {
   mounted () {
     this.oneDotWidth = (window.getComputedStyle(this.$refs.dots).width).replace('px', '')
     this.slidesWidth = this.getSlidesWidth()
-    window.onresize = () => {
-      this.slidesWidth = this.getSlidesWidth()
-    }
 
     window.addEventListener('keydown', this.slideOnKey)
     window.addEventListener('mousemove', this.changeCursorOnMove)
+
+    if (window.outerWidth > 768) {
+      window.onresize = () => {
+        this.slidesWidth = this.getSlidesWidth()
+      }
+
+      window.addEventListener('keydown', this.slideOnKey)
+      window.addEventListener('mousemove', this.changeCursorOnMove)
+    }
+
+    if (window.outerWidth < 768) {
+      window.removeEventListener('keydown', this.slideOnKey)
+      window.removeEventListener('mousemove', this.changeCursorOnMove)
+    }
   },
 
   destroyed () {
@@ -100,7 +115,7 @@ export default {
     },
 
     getSlidesWidth () {
-      return this.getSlideWidth() * this.slides.length
+      return (this.getSlideWidth() * this.slides.length) - 2
     },
 
     blockButtons () {
@@ -157,6 +172,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .portfolio-enter-active, .portfolio-leave-active {
+    transition: opacity .5s ease;
+  }
+
+  .portfolio-enter-active {
+    transition-delay: .5s;
+  }
+
+  .portfolio-enter, .portfolio-leave-active {
+    opacity: 0;
+  }
+
   .portfolio {
     display: flex;
     flex-flow: column nowrap;
@@ -333,5 +360,59 @@ export default {
   .slider-next {
     background: url('../assets/right.svg') no-repeat center / contain;
     right: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .slider-dots {
+      display: none;
+    }
+
+    .slider-container {
+      padding: 100px 0;
+    }
+
+    .slider {
+      max-width: 100%;
+    }
+
+    .slider-content {
+      width: 100% !important;
+      transform: translate3d(0,0,0) !important;
+
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slider-item {
+      margin-bottom: 70px;
+      width: 100%;
+
+      &.next,
+      &.previous {
+        opacity: 1;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .slider-item a {
+      padding: 0 20px;
+    }
+
+    .slider-item__name {
+      margin-bottom: 5px;
+    }
+
+    .slider-item img {
+      border-radius: 6px;
+    }
+
+    .slider-item__margin {
+      margin-bottom: 20px;
+    }
   }
 </style>

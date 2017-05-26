@@ -28,7 +28,7 @@
           | Contact
         svgicon.svg-contact(icon="contact" width="24" height="24px")
 
-    nuxt
+    nuxt(appear)
 </template>
 <script>
 if (process.BROWSER_BUILD) {

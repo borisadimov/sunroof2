@@ -5,31 +5,32 @@
         | {{ project.title }}
       .project__subtitle
         | {{ project.subtitle }}
-      .project-info
-        .project-item
-          .project-item__label
-            | LIVE
-          a.project-item__value(:href="project.live")
-            | {{ project.live }}
+      .project-wrapper(:class="{'project-wrapper--shown': isShown}")
+        .project-info
+          .project-item
+            .project-item__label
+              | LIVE
+            a.project-item__value(:href="project.live")
+              | {{ project.live }}
 
-        .project-item
-          .project-item__label
-            | PROJECT
-          .project-item__value
-            | {{ project.description }}
+          .project-item
+            .project-item__label
+              | PROJECT
+            .project-item__value
+              | {{ project.description }}
 
-        .project-item
-          .project-item__label
-            | CHALLENGE
-          .project-item__value
-            | {{ project.challenge }}
+          .project-item
+            .project-item__label
+              | CHALLENGE
+            .project-item__value
+              | {{ project.challenge }}
 
-      .project-images
-        .project-images__item(v-for="image in project.images")
-          img.project-image(:src="'/portfolio/' + image")
+        .project-images
+          .project-images__item(v-for="image in project.images")
+            img.project-image(:src="'/portfolio/' + image")
 
-      .project-footer
-        | Thank you. <nuxt-link to="/portfolio">Portfolio</nuxt-link>
+        .project-footer
+          | Thank you. <nuxt-link to="/portfolio">Portfolio</nuxt-link>
 
 </template>
 
@@ -39,7 +40,13 @@ import content from '~assets/fixtures'
 export default {
   name: 'Project',
 
-  transition: 'none',
+  data () {
+    return {
+      isShown: false
+    }
+  },
+
+  transition: 'item',
 
   head: {
     title: 'Sunroof | Project'
@@ -49,6 +56,12 @@ export default {
     project () {
       return content.filter(i => +i.id === +this.$route.params.id)[0]
     }
+  },
+
+  mounted () {
+    setTimeout(() => {
+      this.isShown = true
+    }, 300)
   }
 }
 </script>
@@ -65,6 +78,8 @@ export default {
   }
 
   .project__title {
+    margin-top: 5px;
+
     text-align: center;
     font-size: 26px;
     color: rgba(0,0,0,0.70);
@@ -79,6 +94,16 @@ export default {
     color: rgba(0,0,0,0.40);
     letter-spacing: 0;
     line-height: 18px;
+  }
+
+  .project-wrapper {
+    opacity: 0;
+    transition: opacity .5s ease;
+    will-change: opacity;
+
+    &--shown {
+      opacity: 1;
+    }
   }
 
   .project-info {
