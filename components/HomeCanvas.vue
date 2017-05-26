@@ -330,7 +330,7 @@ export default {
     will-change: transform;
   }
 
-   @keyframes backgroundGradient {
+  @keyframes backgroundGradient {
     0% {
       background-position: 0% 50%;
     }
@@ -373,9 +373,9 @@ export default {
   }
 
   html, body {
-      height: 100%;
-      width: 100%;
-      margin: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
   }
 
   span {

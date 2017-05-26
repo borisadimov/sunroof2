@@ -1,5 +1,5 @@
 <template lang="pug">
-  nuxt-container#app(:class="$route.name.toLowerCase()")
+  #app(:class="$route.name.toLowerCase()")
     transition(name="color" appear)
       nuxt-link.header-link.header-link__home(to="/")
         svgicon.svg-home(icon="home" width="18" height="19")
@@ -53,18 +53,6 @@ export default {
     box-sizing: border-box;
   }
 
-  .page-enter-active, .page-leave-active {
-    transition: opacity .5s ease;
-  }
-
-  .page-enter-active {
-    transition-delay: .5s;
-  }
-
-  .page-enter, .page-leave-active {
-    opacity: 0;
-  }
-
   #app {
     font-family: 'Source Sans Pro', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -96,18 +84,6 @@ export default {
     .container {
       padding: 100px 30px;
     }
-  }
-
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s ease;
-  }
-
-  .fade-enter-active {
-    transition-delay: .5s;
-  }
-
-  .fade-enter, .fade-leave-active {
-    opacity: 0;
   }
 
   .color-enter-active, .color-leave-active {

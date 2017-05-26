@@ -39,6 +39,8 @@ import content from '~assets/fixtures'
 export default {
   name: 'Project',
 
+  transition: 'none',
+
   head: {
     title: 'Sunroof | Project'
   },
