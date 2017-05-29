@@ -29,7 +29,7 @@ var nuxt = new Nuxt(options)
 nuxt.generate()
   .then(() => {
     console.log('[nuxt] Generate done') // eslint-disable-line no-console
-    process.exit(1)
+    process.exit(0)
   })
   .catch((err) => {
     console.error(err) // eslint-disable-line no-console
