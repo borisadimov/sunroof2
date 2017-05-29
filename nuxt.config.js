@@ -64,7 +64,7 @@ module.exports = {
   }
   ,
   generate: {
-    routes: getPortfolioRoutes()
+    routes: getPortfolioRoutes
   }
 
 }
