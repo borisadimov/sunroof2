@@ -12,6 +12,8 @@
       .editing(v-if="editingId!==undefined")
         input(type="text" placeholder="title" v-model="portfolioItem.title")
         input(type="text" placeholder="subtitle" v-model="portfolioItem.subtitle")
+        input(type="text" placeholder="alias" v-model="portfolioItem.alias")
+        input(type="number" v-model="portfolioItem.priority")
         input(type="text" placeholder="cover image url" v-model="portfolioItem.cover")
         textarea(placeholder="content" v-model="portfolioItem.text")
         div
