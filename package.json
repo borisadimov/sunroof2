@@ -18,7 +18,7 @@
     "lodash": "^4.17.4",
     "node-sass": "^4.5.2",
     "normalize.css": "^7.0.0",
-    "nuxt": "latest",
+    "nuxt": "0.10.7",
     "postcss": "^6.0.1",
     "postcss-flexbugs-fixes": "^2.1.1",
     "postcss-flexibility": "^1.1.1",
@@ -33,7 +33,6 @@
     "vue-style-loader": "^3.0.1",
     "vue-svgicon": "^1.1.7",
     "vue-typer": "^1.0.3",
-    "vuefire": "^1.4.3",
     "vuex": "^2.3.1",
     "vuexfire": "^2.1.3"
   },

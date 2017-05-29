@@ -16,10 +16,10 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' }
     ]
   },
-
-  plugins: [
-     { src: '~plugins/ga.js', ssr: false }
-  ],
+  //
+  // plugins: [
+  //    { src: '~plugins/ga.js', ssr: false }
+  // ],
 
   /*
   ** Default styles
@@ -35,7 +35,6 @@ module.exports = {
   /*
   ** Build configuration
   */
-  plugins: ['~/plugins/vuefire'],
 
   build: {
     /*
@@ -60,7 +59,7 @@ module.exports = {
       require('postcss-flexibility')()
     ],
 
-    vendor: ['normalize.css', 'three-js']
+    vendor: ['normalize.css', 'three-js', 'axios']
   }
   ,
   generate: {
