@@ -1,3 +1,5 @@
+var getPortfolioRoutes = require('./db.js').getPortfolioRoutes
+
 module.exports = {
   /*
   ** Headers of the page
@@ -30,10 +32,11 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: { color: '#f8e5c1' },
-
   /*
   ** Build configuration
   */
+  plugins: ['~/plugins/vuefire'],
+
   build: {
     /*
     ** Run ESLINT on save
@@ -59,4 +62,9 @@ module.exports = {
 
     vendor: ['normalize.css', 'three-js']
   }
+  ,
+  generate: {
+    routes: getPortfolioRoutes()
+  }
+
 }

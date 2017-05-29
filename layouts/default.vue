@@ -321,7 +321,7 @@ export default {
   }
 
   .portfolio,
-  .portfolio-id {
+  .portfolio-alias {
     .header-link__logo {
       color: #F48E5C;
     }

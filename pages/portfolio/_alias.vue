@@ -7,35 +7,40 @@
         | {{ project.subtitle }}
       .project-wrapper(:class="{'project-wrapper--shown': isShown}")
         .project-info
-          .project-item
-            .project-item__label
-              | LIVE
-            a.project-item__value(:href="project.live")
-              | {{ project.live }}
-
-          .project-item
-            .project-item__label
-              | PROJECT
-            .project-item__value
-              | {{ project.description }}
-
-          .project-item
-            .project-item__label
-              | CHALLENGE
-            .project-item__value
-              | {{ project.challenge }}
-
-        .project-images
-          .project-images__item(v-for="image in project.images")
-            img.project-image(:src="'/portfolio/' + image")
+          vue-markdown(:source="project.text")
+        //- .project-info
+        //-   .project-item
+        //-     .project-item__label
+        //-       | LIVE
+        //-     a.project-item__value(:href="project.live")
+        //-       | {{ project.live }}
+        //-
+        //-   .project-item
+        //-     .project-item__label
+        //-       | PROJECT
+        //-     .project-item__value
+        //-       | {{ project.description }}
+        //-
+        //-   .project-item
+        //-     .project-item__label
+        //-       | CHALLENGE
+        //-     .project-item__value
+        //-       | {{ project.challenge }}
+        //-
+        //- .project-images
+        //-   .project-images__item(v-for="image in project.images")
+        //-     img.project-image(:src="'/portfolio/' + image")
 
         .project-footer
           | Thank you. <nuxt-link to="/portfolio">Portfolio</nuxt-link>
-
 </template>
 
 <script>
-import content from '~assets/fixtures'
+
+import { db } from '~/db'
+import { mapGetters } from 'vuex'
+import VueMarkdown from 'vue-markdown'
+const $portfolio = db.ref('portfolio')
 
 export default {
   name: 'Project',
@@ -52,9 +57,20 @@ export default {
     title: 'Sunroof | Project'
   },
 
+  fetch ({ store }) {
+    return store.dispatch('setPortfolioRef', $portfolio)
+  },
+
   computed: {
+    ...mapGetters(['slides']),
     project () {
-      return content.filter(i => +i.id === +this.$route.params.id)[0]
+      return this.slides.filter((item, index) => {
+        if (item.alias) {
+          return item.alias === this.$route.params.alias
+        } else {
+          return +index === +this.$route.params.alias
+        }
+      })[0]
     }
   },
 
@@ -62,6 +78,10 @@ export default {
     setTimeout(() => {
       this.isShown = true
     }, 300)
+  },
+
+  components: {
+    VueMarkdown
   }
 }
 </script>

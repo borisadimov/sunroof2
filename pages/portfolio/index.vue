@@ -13,18 +13,19 @@
             v-for="slide, index in slides",
             :class="{'previous': index < slideIndex, 'active': index === slideIndex, 'next': index > slideIndex }")
             .slider-item__inner
-              nuxt-link(:to="'/portfolio/' + slide.id")
+              nuxt-link(:to="'/portfolio/' + (slide.alias ? slide.alias : index)")
                 .slider-item__name
                   | {{ slide.title }}
-              nuxt-link.slider-item__margin(:to="'/portfolio/' + slide.id")
                 .slider-item__description
                   | {{ slide.subtitle }}
-              nuxt-link(:to="'/portfolio/' + slide.id")
-                img(:src="'/portfolio/' + slide.preview_image")
+                img(:src="getCover(slide.cover)")
 </template>
 
 <script>
-import content from '~assets/fixtures'
+
+import { db } from '~/db'
+import { mapGetters } from 'vuex'
+const $portfolio = db.ref('portfolio')
 
 export default {
   name: 'Portfolio',
@@ -36,6 +37,9 @@ export default {
   transition: {
     name: 'portfolio'
   },
+  fetch ({ store }) {
+    return store.dispatch('setPortfolioRef', $portfolio)
+  },
 
   data () {
     return {
@@ -43,7 +47,6 @@ export default {
       direction: 'left',
       canSlide: true,
       slideIndex: 0,
-      slides: content,
       slidesWidth: null,
       cursorLeft: false,
       cursorRight: false,
@@ -52,6 +55,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters(['slides']),
     translateOffset () {
       return -(this.slidesWidth / this.slides.length) * this.slideIndex
     }
@@ -85,6 +89,10 @@ export default {
   },
 
   methods: {
+
+    getCover (url) {
+      return '//' + url.replace('http://', '').replace('https://', '')
+    },
     slideOnKey (e) {
       if (e.keyCode === 37) {
         this.onSlide(this.prev, this.slides)
@@ -221,11 +229,11 @@ export default {
     }
 
     &.cursorLeft {
-      cursor: url('../assets/left.svg'), auto;
+      cursor: url('../../assets/left.svg'), auto;
     }
 
     &.cursorRight {
-      cursor: url('../assets/right.svg'), auto;
+      cursor: url('../../assets/right.svg'), auto;
     }
   }
 
@@ -353,12 +361,12 @@ export default {
   }
 
   .slider-prev {
-    background: url('../assets/left.svg') no-repeat center / contain;
+    background: url('../../assets/left.svg') no-repeat center / contain;
     left: 30px;
   }
 
   .slider-next {
-    background: url('../assets/right.svg') no-repeat center / contain;
+    background: url('../../assets/right.svg') no-repeat center / contain;
     right: 30px;
   }
 
