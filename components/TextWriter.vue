@@ -4,7 +4,7 @@
       <h1 class="cd-headline letters type">
         <span>A collective of </span>
         <span class="cd-words-wrapper">
-          <vue-typer :shuffle="true" :text="arrayOfSentences"></vue-typer>
+          <vue-typer :shuffle="true" :text="arrayOfSentences" v-if="renderTyper"></vue-typer>
         </span>
       </h1>
     </section>
@@ -12,13 +12,15 @@
 </template>
 
 <script>
+import DumbTyper from './DumbTyper'
 var VueTyper = process.BROWSER_BUILD
-  ? VueTyper = require('vue-typer').VueTyper : ''
+  ? VueTyper = require('vue-typer').VueTyper : DumbTyper
 
 export default {
   name: 'TextWriter',
   data () {
     return {
+      renderTyper: false,
       arrayOfSentences: [
         'design-obsessed digital junkies',
         'sometimes really cool people',
@@ -26,9 +28,12 @@ export default {
       ]
     }
   },
-
-  mounted () {
-
+  computed: {
+  },
+  created () {
+    if (process.BROWSER_BUILD) {
+      setTimeout(() => { this.renderTyper = true }, 10)
+    }
   },
 
   components: {

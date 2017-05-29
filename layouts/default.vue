@@ -1,5 +1,5 @@
 <template lang="pug">
-  #app(:class="$route.name.toLowerCase()")
+  #app(:class="routeName")
     transition(name="color" appear)
       nuxt-link.header-link.header-link__home(to="/")
         svgicon.svg-home(icon="home" width="18" height="19")
@@ -7,7 +7,7 @@
           | Home
 
     transition(name="color" appear)
-      nuxt-link.header-link.header-link__logo(to="/" v-if="$route.name.toLowerCase() !== 'index'")
+      nuxt-link.header-link.header-link__logo(to="/" v-if="routeName !== 'index'")
         svgicon.svg-logo(icon="logo" width="40" height="40")
 
     transition(name="color" appear)
@@ -44,7 +44,15 @@ export default {
 
   mounted () {
 
+  },
+
+  computed: {
+    routeName () {
+      const name = this.$route.name || ''
+      return name.toLowerCase()
+    }
   }
+
 }
 
 </script>
