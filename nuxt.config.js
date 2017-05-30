@@ -60,10 +60,9 @@ module.exports = {
     ],
 
     vendor: ['normalize.css', 'three-js', 'axios']
-  }
-  ,
+  },
+
   generate: {
     routes: getPortfolioRoutes
   }
-
 }

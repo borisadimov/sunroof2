@@ -29,9 +29,13 @@
         svgicon.svg-contact(icon="contact" width="24" height="24px")
 
     transition(name="page" appear)
-      nuxt(appear)
+      div
+        BlackBackground
+        nuxt(appear)
 </template>
 <script>
+import BlackBackground from '~/components/BlackBackground'
+
 if (process.BROWSER_BUILD) {
   require('~/components/Navigation')
 }
@@ -40,7 +44,8 @@ import svgicon from 'vue-svgicon/component/svgicon'
 
 export default {
   components: {
-    svgicon
+    svgicon,
+    BlackBackground
   },
 
   mounted () {

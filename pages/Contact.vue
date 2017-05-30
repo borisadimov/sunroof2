@@ -1,6 +1,5 @@
 <template lang="pug">
   .page.contact
-    black-background
     .container
       .title
         | We are avilable for
@@ -41,25 +40,18 @@
 </template>
 
 <script>
-import BlackBackground from '~components/BlackBackground'
 export default {
   name: 'Contact',
 
+  layout: 'dark',
+
   head: {
     title: 'Sunroof | Contact'
-  },
-
-  components: {
-    BlackBackground
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .contact {
-    background: #242424;
-  }
-
   .container {
     height: 100%;
     display: flex;

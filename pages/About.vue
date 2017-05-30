@@ -54,10 +54,10 @@
 </template>
 
 <script>
-import BlackBackground from '~components/BlackBackground'
-
 export default {
   name: 'About',
+
+  layout: 'dark',
 
   head: {
     title: 'Sunroof | About'
@@ -67,19 +67,11 @@ export default {
     return {
 
     }
-  },
-
-  components: {
-    BlackBackground
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .about {
-    background: #242424;
-  }
-
   .container {
     display: flex;
     flex-flow: column nowrap;

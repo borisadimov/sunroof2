@@ -10,20 +10,24 @@ const store = new Vuex.Store({
     portfolio: [],
     user: !!firebase.auth().currentUser
   },
+
   getters: {
     portfolio: state => state.portfolio,
     user: state => state.user,
     slides: state => sortBy(state.portfolio, 'priority')
   },
+
   mutations: {
     ...firebaseMutations,
     login (state, user) {
       state.user = !!user
     },
+
     logout (state) {
       state.user = null
     }
   },
+
   actions: {
     setPortfolioRef: firebaseAction(({
         bindFirebaseRef
@@ -35,9 +39,11 @@ const store = new Vuex.Store({
         })
       })
     }),
+
     login ({ commit }, user) {
       commit('login', user)
     },
+
     logout ({ commit }) {
       commit('logout')
     }
