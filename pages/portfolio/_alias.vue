@@ -7,29 +7,45 @@
         | {{ project.subtitle }}
       .project-wrapper(:class="{'project-wrapper--shown': isShown}")
         .project-info
-          vue-markdown(:source="project.text")
-        //- .project-info
-        //-   .project-item
-        //-     .project-item__label
-        //-       | LIVE
-        //-     a.project-item__value(:href="project.live")
-        //-       | {{ project.live }}
-        //-
-        //-   .project-item
-        //-     .project-item__label
-        //-       | PROJECT
-        //-     .project-item__value
-        //-       | {{ project.description }}
-        //-
-        //-   .project-item
-        //-     .project-item__label
-        //-       | CHALLENGE
-        //-     .project-item__value
-        //-       | {{ project.challenge }}
-        //-
-        //- .project-images
-        //-   .project-images__item(v-for="image in project.images")
-        //-     img.project-image(:src="'/portfolio/' + image")
+          .project-row
+            .project-item
+              .project-item__label
+                | LIVE
+              a.project-item__value(:href="project.live")
+                | http://digdeep.org
+
+            .project-item
+              .project-item__label
+                | SERVICES
+              .project-item__value
+                | Website development
+
+          .project-item
+            .project-item__label
+              | PROJECT
+            .project-item__value
+              | <span>Who:</span> DIGDEEP, a non-profit defending the access to water as a human right
+              br
+              | <span>What:</span> Develop a visually appealing web experience to “change the way they link about water rights”
+              br
+              | <span>Why:</span> Inspired by their goals, Sunroof has collaborated since day one to find new ways to engage their audience and spread awareness
+
+        // .project-phones
+        //   .project-phones__item
+        //     .project-phone
+        //       .project-phone__image
+        //         img(src="~assets/mobile.jpg")
+        //   .project-phones__item
+        //     .project-phones__text
+        //       | A little lovin’ and
+        //       br
+        //       | a whole lot of jazz!
+        //       br
+        //       | Amirite?
+        //     .project-phone
+        //       .project-phone__image
+        //         img(src="~assets/mobile.jpg")
+        vue-markdown(:source="project.text")
 
         .project-footer
           | Thank you. <nuxt-link to="/portfolio">Portfolio</nuxt-link>
@@ -114,6 +130,8 @@ export default {
     color: rgba(0,0,0,0.40);
     letter-spacing: 0;
     line-height: 18px;
+
+    margin-bottom: 50px;
   }
 
   .project-wrapper {
@@ -132,8 +150,10 @@ export default {
     max-width: 600px;
   }
 
-  .project-images__item {
-    margin-bottom: 100px;
+  .project-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
   }
 
   .project-item__label {
@@ -151,18 +171,15 @@ export default {
     letter-spacing: 0;
     line-height: 18px;
     text-decoration: none;
+
+    span {
+      font-weight: bold;
+    }
   }
 
   .project-item {
+    flex: 0 0 50%;
     margin-bottom: 50px;
-  }
-
-  .project-images {
-    width: 100%;
-  }
-
-  .project-image {
-    width: 100%;
   }
 
   .project-footer {
@@ -188,6 +205,101 @@ export default {
 
     .project-item {
       margin-bottom: 30px;
+    }
+  }
+</style>
+
+
+<style lang="scss">
+  .project {
+    p {
+      font-size: 12px;
+      color: rgba(0,0,0,0.70);
+      letter-spacing: 0;
+      line-height: 18px;
+
+      margin: 0 auto;
+      margin-bottom: 50px;
+      max-width: 600px;
+    }
+
+    img {
+      width: 100%;
+      margin-bottom: 50px;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-weight: bold;
+      font-size: 18px;
+      color: rgba(0,0,0,0.70);
+      letter-spacing: 2.2px;
+
+      margin: 0 auto;
+      margin-bottom: 11px;
+      max-width: 600px;
+    }
+  }
+
+  .project-phones {
+    max-width: 760px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+
+  .project-phones__item {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+  }
+
+  .project-phones__text {
+    padding-right: 65px;
+    padding-left: 65px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+
+    font-size: 34px;
+    color: rgba(0,0,0,0.70);
+  }
+
+  .project-phone {
+    background: url('../../assets/phone.jpg') no-repeat center / contain;
+    width: 288px;
+    height: 577.6px;
+    overflow: hidden;
+
+    position: relative;
+  }
+
+  .project-phone__image {
+    width: 282px;
+    height: 463px;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    position: absolute;
+    top: 53px;
+    left: 19px;
+
+    padding-right: 28px; /*This would hide the scroll bar of the right. To be sure we hide the scrollbar on every browser, increase this value*/
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .project-phone__image img {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .project-phones {
+      display: none;
     }
   }
 </style>

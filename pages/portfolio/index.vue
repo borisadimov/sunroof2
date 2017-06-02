@@ -12,7 +12,7 @@
             ref="slideWidth"
             v-for="slide, index in slides",
             :class="{'previous': index < slideIndex, 'active': index === slideIndex, 'next': index > slideIndex }")
-            .slider-item__inner
+            .slider-item__inner(@click="eventStopPropagation")
               nuxt-link(:to="'/portfolio/' + (slide.alias ? slide.alias : index)")
                 .slider-item__name
                   | {{ slide.title }}
@@ -34,9 +34,6 @@ export default {
     title: 'Sunroof | Portfolio'
   },
 
-  transition: {
-    name: 'portfolio'
-  },
   fetch ({ store }) {
     return store.dispatch('setPortfolioRef', $portfolio)
   },
@@ -56,6 +53,7 @@ export default {
 
   computed: {
     ...mapGetters(['slides']),
+
     translateOffset () {
       return -(this.slidesWidth / this.slides.length) * this.slideIndex
     }
@@ -84,15 +82,22 @@ export default {
   },
 
   destroyed () {
+    window.onresize = null
+
     window.removeEventListener('keydown', this.slideOnKey)
     window.removeEventListener('mousemove', this.changeCursorOnMove)
   },
 
   methods: {
+    eventStopPropagation (e) {
+      e.preventDefault()
+      e.stopPropagation()
+    },
 
     getCover (url) {
       return '//' + url.replace('http://', '').replace('https://', '')
     },
+
     slideOnKey (e) {
       if (e.keyCode === 37) {
         this.onSlide(this.prev, this.slides)
@@ -396,6 +401,7 @@ export default {
     .slider-item {
       margin-bottom: 70px;
       width: 100%;
+      display: block;
 
       &.next,
       &.previous {
@@ -409,10 +415,21 @@ export default {
 
     .slider-item a {
       padding: 0 20px;
+      width: 100%;
+    }
+
+    .slider-item__inner {
+      width: 100%;
     }
 
     .slider-item__name {
       margin-bottom: 5px;
+      width: 100%;
+      white-space: pre-wrap;
+    }
+
+    .slider-item__description {
+      margin-bottom: 20px;
     }
 
     .slider-item img {
