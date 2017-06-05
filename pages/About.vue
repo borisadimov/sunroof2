@@ -6,6 +6,8 @@
         | What is Sunroof?
       .subtitle
         | Sunroof is a collective of design-obsessed digital junkies, based in Los Angeles. Our goal is to find innovative ways to interact with users—striking the perfect balance between usability and aesthetic. Whether working with clients or our own passion projects, Sunroof strives to push creative and developmental boundaries, while bringing ambitious ideas to life.
+      .subtitle
+        | Tom Roof Al Tighe
 
       .skills
         .skills__title
@@ -14,43 +16,53 @@
         .skills-list
           .skills-item
             .skills-item__title
-              | Animation
+              | Services
             .skills-item__skill
-              | Creative Strategy
+              | Website Design & Development
             .skills-item__skill
-              | Creative Direction
+              | User Experience Design
             .skills-item__skill
-              | 2D
+              | 2D Graphics & Animation
+            .skills-item__skill
+              | Creative Direction & Strategy
+
 
           .skills-item
             .skills-item__title
-              | Interactive
+              | Solutions
             .skills-item__skill
-              | Websites
+              | Interactive Web Experiences
             .skills-item__skill
-              | Games
+              | Mobile Applications
             .skills-item__skill
-              | Mobile Experiences
-
-          .skills-item
-            .skills-item__title
-              | Location
+              | Branding
             .skills-item__skill
-              | Project mapping
-            .skills-item__skill
-              | Interactive environments
-            .skills-item__skill
-              | Virtual reality
+              | Game Design & Development
 
           .skills-item
             .skills-item__title
               | Products
             .skills-item__skill
-              | App design & development
+              | Shopify Stores
             .skills-item__skill
-              | E-commerce
+              | Squarespace Customization
             .skills-item__skill
-              | Explainer videos
+                | Video Production & Editing
+            .skills-item__skill
+                | Wordpress Theme Development
+
+          .skills-item
+            .skills-item__title
+              | R&D
+            .skills-item__skill
+              | Virtual Reality
+            .skills-item__skill
+              | Neural Networks
+            .skills-item__skill
+              | 3D Modeling
+            .skills-item__skill
+              | The New Internet
+
 </template>
 
 <script>

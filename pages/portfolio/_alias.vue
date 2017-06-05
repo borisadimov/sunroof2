@@ -154,10 +154,10 @@ export default {
   .project__subtitle {
     margin-top: 10px;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     color: rgba(0,0,0,0.40);
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 20px;
 
     margin-bottom: 50px;
   }
@@ -194,10 +194,10 @@ export default {
   }
 
   .project-item__value {
-    font-size: 12px;
+    font-size: 14px;
     color: rgba(0,0,0,0.70);
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 20px;
     text-decoration: none;
 
     .project-item__value--bold {
@@ -217,7 +217,7 @@ export default {
     font-size: 14px;
     color: rgba(0,0,0,0.70);
     letter-spacing: 0.25px;
-    line-height: 18px;
+    line-height: 20px;
     text-align: center;
 
     a {
@@ -242,10 +242,10 @@ export default {
 <style lang="scss">
   .project {
     p {
-      font-size: 12px;
+      font-size: 14px;
       color: rgba(0,0,0,0.70);
       letter-spacing: 0;
-      line-height: 18px;
+      line-height: 20px;
 
       margin: 0 auto;
       margin-bottom: 50px;
