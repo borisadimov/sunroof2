@@ -60,8 +60,10 @@ export default {
   },
 
   mounted () {
-    this.oneDotWidth = (window.getComputedStyle(this.$refs.dots).width).replace('px', '')
-    this.slidesWidth = this.getSlidesWidth()
+    setTimeout(() => {
+      this.oneDotWidth = (window.getComputedStyle(this.$refs.dots).width).replace('px', '')
+      this.slidesWidth = this.getSlidesWidth()
+    }, 300)
 
     window.addEventListener('keydown', this.slideOnKey)
     window.addEventListener('mousemove', this.changeCursorOnMove)
@@ -207,7 +209,7 @@ export default {
   .slider {
     height: 100%;
     width: 100%;
-    max-width: 60%;
+    max-width: 55%;
     margin: 0 auto;
     text-align: center;
 
@@ -224,6 +226,7 @@ export default {
 
   .slider-container {
     height: 100%;
+    width: 100%;
     padding: 0;
     margin: 0;
     position: relative;
@@ -289,7 +292,7 @@ export default {
   .slider-item {
     display: inline-block;
     vertical-align: middle;
-    width: 60vw;
+    width: 55vw;
 
     transition: transform 0.5s ease, opacity 1s ease;
     will-change: opacity, transform;
@@ -323,7 +326,6 @@ export default {
   .slider-item img {
     height: 100%;
     width: 100%;
-    max-width: 600px;
   }
 
   .slider-item__inner {
@@ -351,6 +353,7 @@ export default {
     color: rgba(0, 0, 0, 0.40);
     letter-spacing: 0;
     line-height: 18px;
+    margin-bottom: 20px;
   }
 
   .slider-prev,

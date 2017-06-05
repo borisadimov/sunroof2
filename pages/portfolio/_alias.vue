@@ -12,23 +12,23 @@
               .project-item__label
                 | LIVE
               a.project-item__value(:href="project.live")
-                | http://digdeep.org
+                | {{ project.live }}
 
             .project-item
               .project-item__label
                 | SERVICES
               .project-item__value
-                | Website development
+                | {{ project.services }}
 
           .project-item
             .project-item__label
               | PROJECT
             .project-item__value
-              | <span>Who:</span> DIGDEEP, a non-profit defending the access to water as a human right
+              | <span>Who:</span> {{ project.who }}
               br
-              | <span>What:</span> Develop a visually appealing web experience to “change the way they link about water rights”
+              | <span>What:</span> {{ project.what }}
               br
-              | <span>Why:</span> Inspired by their goals, Sunroof has collaborated since day one to find new ways to engage their audience and spread awareness
+              | <span>Why:</span> {{ project.why }}
 
         // .project-phones
         //   .project-phones__item
@@ -63,7 +63,20 @@ export default {
 
   data () {
     return {
-      isShown: false
+      isShown: false,
+      project: {
+        title: '',
+        subtitle: '',
+        live: '',
+        services: '',
+        project_who: '',
+        project_what: '',
+        project_why: '',
+        cover: '',
+        text: '',
+        alias: '',
+        priority: ''
+      }
     }
   },
 
@@ -77,22 +90,18 @@ export default {
     return store.dispatch('setPortfolioRef', $portfolio)
   },
 
-  computed: {
-    ...mapGetters(['slides']),
-    project () {
-      return this.slides.filter((item, index) => {
+  computed: mapGetters(['slides']),
+
+  mounted () {
+    setTimeout(() => {
+      this.isShown = true
+      this.project = this.slides.filter((item, index) => {
         if (item.alias) {
           return item.alias === this.$route.params.alias
         } else {
           return +index === +this.$route.params.alias
         }
       })[0]
-    }
-  },
-
-  mounted () {
-    setTimeout(() => {
-      this.isShown = true
     }, 300)
   },
 
