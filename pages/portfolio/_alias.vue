@@ -17,18 +17,25 @@
             .project-item
               .project-item__label
                 | SERVICES
-              .project-item__value
-                | {{ project.services }}
+              .project-item__value(v-html="project.services")
 
           .project-item
             .project-item__label
               | PROJECT
             .project-item__value
-              | <span>Who:</span> {{ project.who }}
+              | <span class="project-item__value--bold">Who:</span>
+              span(v-html="project.project_who")
               br
-              | <span>What:</span> {{ project.what }}
+              | <span class="project-item__value--bold">What:</span>
+              span(v-html="project.project_what")
               br
-              | <span>Why:</span> {{ project.why }}
+              | <span class="project-item__value--bold">Why:</span>
+              span(v-html="project.project_why")
+
+        vue-markdown(:source="project.text")
+
+        .project-footer
+          | Thank you. <nuxt-link to="/portfolio">Portfolio</nuxt-link>
 
         // .project-phones
         //   .project-phones__item
@@ -45,10 +52,22 @@
         //     .project-phone
         //       .project-phone__image
         //         img(src="~assets/mobile.jpg")
-        vue-markdown(:source="project.text")
 
-        .project-footer
-          | Thank you. <nuxt-link to="/portfolio">Portfolio</nuxt-link>
+        // ################ COMPILED
+
+        // <div class="project-phones">
+        //   <div class="project-phones__item">
+        //     <div class="project-phone">
+        //       <div class="project-phone__image"><img src="https://trello-attachments.s3.amazonaws.com/5910f8d0e5450cc0f7564010/59235dcccb72c83d51c05887/8bd0f0f06827a54cc859cf5b545b4a5f/digdeep_mobile2.jpg"/></div>
+        //     </div>
+        //   </div>
+        //   <div class="project-phones__item">
+        //     <div class="project-phones__text">A little lovin’ and<br/>a whole lot of jazz!<br/>Amirite?</div>
+        //     <div class="project-phone">
+        //       <div class="project-phone__image"><img src="https://trello-attachments.s3.amazonaws.com/5910f8d0e5450cc0f7564010/59235dcccb72c83d51c05887/1b1a3b116aaed1998259d1d1990709e9/digdeep_mobile1.jpg"/></div>
+        //     </div>
+        //   </div>
+        // </div>
 </template>
 
 <script>
@@ -181,7 +200,8 @@ export default {
     line-height: 18px;
     text-decoration: none;
 
-    span {
+    .project-item__value--bold {
+      margin-right: 4px;
       font-weight: bold;
     }
   }

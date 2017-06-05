@@ -6,7 +6,7 @@
         | Projects list:
       .portfolio-list
         .portfolio-item(v-for="item in portfolio")
-          | {{ item.title }}
+          a(:href="'/portfolio/' + item.alias" target="_blank") {{ item.title }}
           .portfolio-controls
             span.portfolio-edit(v-if="editingId !== item['.key']" @click="edit(item['.key'])")
               | ✏️
@@ -31,8 +31,11 @@
               span 🗒
               | Create Project
             .editing-title(v-if="editing")
-              span ️️️️️✏️
-              | Edit Project
+              .editing-title__inner
+                span ️️️️️✏️
+                | Edit Project
+              a.editing-title__open(v-if="portfolioItem.alias !== ''" :href="'/portfolio/' + portfolioItem.alias")
+                | open link
             .editing-field
               .editing-label Title
               input(type="text" placeholder="The Project Name" @input="inputChange" v-model="portfolioItem.title")
@@ -47,19 +50,19 @@
               input(type="text" placeholder="http://path/to/your/project" @input="inputChange" v-model="portfolioItem.live")
             .editing-field
               .editing-label Services
-              input(type="text" placeholder="Web development, etc" @input="inputChange" v-model="portfolioItem.services")
+              textarea.textarea-small(type="text" placeholder="Web development, etc" @input="inputChange" v-model="portfolioItem.services")
             .editing-field
               .editing-label Project Who
-              input(type="text" placeholder="Who" @input="inputChange" v-model="portfolioItem.project_who")
+              textarea.textarea-small(type="text" placeholder="Who" @input="inputChange" v-model="portfolioItem.project_who")
             .editing-field
               .editing-label Project What
-              input(type="text" placeholder="What" @input="inputChange" v-model="portfolioItem.project_what")
+              textarea.textarea-small(type="text" placeholder="What" @input="inputChange" v-model="portfolioItem.project_what")
             .editing-field
               .editing-label Project Why
-              input(type="text" placeholder="Why" @input="inputChange" v-model="portfolioItem.project_why")
+              textarea.textarea-small(type="text" placeholder="Why" @input="inputChange" v-model="portfolioItem.project_why")
             .editing-field
               .editing-label Alias
-              input(type="text" placeholder="(will be placed instead of id)" v-model="portfolioItem.alias")
+              input(type="text" placeholder="(required: will be placed in project URL)" v-model="portfolioItem.alias")
             .editing-field
               .editing-label Cover Image URL
               input(type="text" placeholder="http://path/to/image/url" v-model="portfolioItem.cover")
@@ -92,19 +95,21 @@
               .mark-item(v-if="portfolioItem.services !== ''")
                 .mark-item__label
                   | SERVICES
-                .mark-item__value
-                  | {{ portfolioItem.services }}
+                .mark-item__value(v-html="portfolioItem.services")
 
             .mark-item
               .mark-item__label(v-if="portfolioItem.project_who !== '' || portfolioItem.project_what !== '' || portfolioItem.project_why !== ''")
                 | PROJECT
               .mark-item__value
                 div(v-if="portfolioItem.project_who !== ''")
-                  | <span>Who:</span> {{ portfolioItem.project_who }}
+                  | <span class="mark-item__value--bold">Who:</span>
+                  span(v-html="portfolioItem.project_who")
                 div(v-if="portfolioItem.project_what !== ''")
-                  | <span>What:</span> {{ portfolioItem.project_what }}
+                  | <span class="mark-item__value--bold"> What:</span>
+                  span(v-html="portfolioItem.project_what")
                 div(v-if="portfolioItem.project_why !== ''")
-                  | <span>Why:</span> {{ portfolioItem.project_why }}
+                  | <span class="mark-item__value--bold">Why:</span>
+                  span(v-html="portfolioItem.project_why")
 
           vue-markdown(:source="portfolioItem.text")
 
@@ -142,7 +147,7 @@ export default {
   name: 'Admin',
   layout: 'admin',
   head: {
-    title: 'Sunroof | Contact'
+    title: 'Sunroof | Admin'
   },
 
   fetch ({ store }) {
@@ -331,6 +336,11 @@ export default {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+
+    a {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
   }
 
   .portfolio-controls {
@@ -387,12 +397,26 @@ export default {
 
     display: flex;
     flex-flow: row nowrap;
+    justify-content: space-between;
     align-items: center;
 
     span {
       margin-right: 10px;
       font-size: 20px;
     }
+  }
+
+  .editing-title__inner {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  .editing-title__open {
+    font-size: 14px;
+    color: #FFFFFF;
+    font-weight: normal;
+    text-decoration: none;
   }
 
   .editing-inner {
@@ -494,6 +518,10 @@ export default {
     overflow-y: scroll
   }
 
+  .textarea-small {
+    min-height: 150px;
+  }
+
   @keyframes deploy {
     0%, 100% {
       transform: rotate(0deg);
@@ -506,6 +534,37 @@ export default {
 
   .deploying {
     animation: deploy .3s ease infinite;
+  }
+
+  @media (max-width: 768px) {
+    .admin {
+      padding: 0 30px 50px;
+    }
+
+    .form {
+      display: block;
+    }
+
+    .form-centered .editing {
+      transform: translateX(0);
+      left: 0;
+    }
+
+    .editing {
+      position: initial;
+      height: initial;
+      width: 100%;
+    }
+
+    .editing-inner {
+      width: 100%;
+      padding: 50px 0;
+    }
+
+    .mark {
+      width: 100%;
+      margin: 0;
+    }
   }
 </style>
 
@@ -607,7 +666,8 @@ export default {
     line-height: 18px;
     text-decoration: none;
 
-    span {
+    .mark-item__value--bold {
+      margin-right: 4px;
       font-weight: bold;
     }
   }
