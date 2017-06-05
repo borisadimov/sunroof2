@@ -29,8 +29,8 @@
               | <span class="project-item__value--bold">What:</span>
               span(v-html="project.project_what")
               br
-              | <span class="project-item__value--bold">Why:</span>
-              span(v-html="project.project_why")
+              | <span class="project-item__value--bold">How:</span>
+              span(v-html="project.project_how")
 
         vue-markdown(:source="project.text")
 
@@ -90,7 +90,7 @@ export default {
         services: '',
         project_who: '',
         project_what: '',
-        project_why: '',
+        project_how: '',
         cover: '',
         text: '',
         alias: '',
@@ -250,6 +250,29 @@ export default {
       margin: 0 auto;
       margin-bottom: 50px;
       max-width: 600px;
+    }
+
+    .video-wrapper {
+      max-width: 100%;
+      margin-bottom: 50px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe,
+    .video-container object,
+    .video-container embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
 
     img {

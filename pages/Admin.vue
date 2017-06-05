@@ -58,8 +58,8 @@
               .editing-label Project What
               textarea.textarea-small(type="text" placeholder="What" @input="inputChange" v-model="portfolioItem.project_what")
             .editing-field
-              .editing-label Project Why
-              textarea.textarea-small(type="text" placeholder="Why" @input="inputChange" v-model="portfolioItem.project_why")
+              .editing-label Project How
+              textarea.textarea-small(type="text" placeholder="How" @input="inputChange" v-model="portfolioItem.project_how")
             .editing-field
               .editing-label Alias
               input(type="text" placeholder="(required: will be placed in project URL)" v-model="portfolioItem.alias")
@@ -98,7 +98,7 @@
                 .mark-item__value(v-html="portfolioItem.services")
 
             .mark-item
-              .mark-item__label(v-if="portfolioItem.project_who !== '' || portfolioItem.project_what !== '' || portfolioItem.project_why !== ''")
+              .mark-item__label(v-if="portfolioItem.project_who !== '' || portfolioItem.project_what !== '' || portfolioItem.project_how !== ''")
                 | PROJECT
               .mark-item__value
                 div(v-if="portfolioItem.project_who !== ''")
@@ -107,9 +107,9 @@
                 div(v-if="portfolioItem.project_what !== ''")
                   | <span class="mark-item__value--bold"> What:</span>
                   span(v-html="portfolioItem.project_what")
-                div(v-if="portfolioItem.project_why !== ''")
-                  | <span class="mark-item__value--bold">Why:</span>
-                  span(v-html="portfolioItem.project_why")
+                div(v-if="portfolioItem.project_how !== ''")
+                  | <span class="mark-item__value--bold">How:</span>
+                  span(v-html="portfolioItem.project_how")
 
           vue-markdown(:source="portfolioItem.text")
 
@@ -136,7 +136,7 @@ const emptyItem = {
   services: '',
   project_who: '',
   project_what: '',
-  project_why: '',
+  project_how: '',
   cover: '',
   text: '',
   alias: '',
@@ -588,6 +588,29 @@ export default {
     flex: 1;
     padding: 16px;
     border: 1px solid #f1f1f1;
+
+   .video-wrapper {
+      max-width: 100%;
+      margin-bottom: 50px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe,
+    .video-container object,
+    .video-container embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
     p {
       font-size: 12px;
