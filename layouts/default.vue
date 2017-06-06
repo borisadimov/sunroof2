@@ -333,6 +333,7 @@ export default {
   .portfolio-alias {
     .header-link__logo {
       color: #F48E5C;
+      height: 3vw;
     }
 
     .svg-home {
@@ -362,6 +363,7 @@ export default {
   .contact {
     .header-link__logo {
       color: #F8E5C1;
+      height: 3vw;
     }
 
     .header-link__text,
