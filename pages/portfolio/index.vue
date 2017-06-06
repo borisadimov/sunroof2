@@ -293,6 +293,7 @@ export default {
     display: inline-block;
     vertical-align: middle;
     width: 55vw;
+    padding: 0 100px;
 
     transition: transform 0.5s ease, opacity 1s ease;
     will-change: opacity, transform;
@@ -309,7 +310,6 @@ export default {
       justify-content: center;
       align-items: center;
 
-      padding: 0 30px;
     }
 
     &.previous {
@@ -349,10 +349,10 @@ export default {
   }
 
   .slider-item__description {
-    font-size: 12px;
+    font-size: 14px;
     color: rgba(0, 0, 0, 0.40);
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 20px;
     margin-bottom: 20px;
   }
 
