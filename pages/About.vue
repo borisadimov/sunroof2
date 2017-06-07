@@ -6,8 +6,6 @@
         | What is Sunroof?
       .subtitle
         | Sunroof is a collective of design-obsessed digital junkies, based in Los Angeles. Our goal is to find innovative ways to interact with users—striking the perfect balance between usability and aesthetic. Whether working with clients or our own passion projects, Sunroof strives to push creative and developmental boundaries, while bringing ambitious ideas to life.
-      .subtitle
-        | Tom Roof Al Tighe
 
       .skills
         .skills__title
