@@ -310,7 +310,7 @@ export default {
 
   .project-phones__text {
     padding-right: 65px;
-    padding-left: 65px;
+    padding-left: 120px;
     margin-top: 80px;
     margin-bottom: 80px;
 
@@ -347,6 +347,8 @@ export default {
   .project-phone__image img {
     display: block;
     margin-bottom: 0;
+
+    cursor: -webkit-grabbing;
   }
 
   @media (max-width: 768px) {
