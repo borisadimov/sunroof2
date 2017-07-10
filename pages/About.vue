@@ -8,7 +8,7 @@
         .title
           | Who We Are
         .subtitle
-          | Sunroof is a collective of design-obsessed digital junkies, based in Los Angeles. Our focus is to create new interactive experiences for users-striking the perfect balance between usability and aesthetic. We strive to push creative and developmental boundaries, while bringing ambitious ideas to life.
+          | Sunroof was built to be different. An alternative to the large agency. We are a collective of design-obsessed digital junkies, based in Los Angeles. Our focus is to create new interactive experiences for users-striking the perfect balance between usability and aesthetic. We seek to push creative and developmental boundaries, while bringing ambitious ideas to life.
 
         .skills
           .skills__title
@@ -59,7 +59,7 @@
         .title
           | How We Work
         .subtitle
-          | We were built to be different. An alternative to the large agency. We see design as strategic as development and development as visually influential as design. We embrace the unknown and have expertise across a wide range of cutting-edge web technologies, frameworks, tools. Our approach is individual to each project allowing us to escape ordinary web products and stimulate development of truly unique websites with a strong sense of identity.
+          | We believe that great design is made better by great code; a marriage of crafts resulting in an original experience for the greater good. We are story-tellers at heart because that is the human language, and we strive to bring your story to life in a truly unique way with a strong sense of identity. We embrace the unknown and have expertise across a wide range of cutting-edge web technologies, frameworks, and tools.
 
 </template>
 
