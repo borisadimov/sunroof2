@@ -3,12 +3,12 @@
     black-background
     .container
         .page_title
-          | Sunroof. Creating human experience in a digital world.
+          | Sunroof. Pushing boundaries on what the web is.
 
         .title
           | Who We Are
         .subtitle
-          | Sunroof was built to be different. An alternative to the large agency. We are a collective of design-obsessed digital junkies, based in Los Angeles. Our focus is to create new interactive experiences for users-striking the perfect balance between usability and aesthetic. We seek to push creative and developmental boundaries, while bringing ambitious ideas to life.
+          | Sunroof was built to be different. An alternative to the large agency. We are a collective of design-obsessed digital junkies, based in Los Angeles. Our focus is to create new interactive experiences for users; striking the perfect balance between usability and aesthetic. We seek to push creative and developmental boundaries, while bringing ambitious ideas to life.
 
         .skills
           .skills__title
@@ -87,7 +87,7 @@ export default {
     flex-flow: column nowrap;
     justify-content: center;
     height: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .page_title {
@@ -167,9 +167,30 @@ export default {
     .skills-list {
       width: 100%;
     }
+  }
 
-    .skills-item__skill {
-      font-size: 12px;
+  @media (max-width: 480px) {
+    .page_title {
+      width: 100%;
+    }
+
+    .title {
+      width: 100%;
+    }
+
+    .subtitle {
+      width: 100%;
+    }
+
+    .skills {
+      width: 100%;
+    }
+
+    .skills-item {
+      flex: 0 0 100%;
+    }
+    .skills-item:first-child {
+      margin-bottom: 30px;
     }
   }
 
