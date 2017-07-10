@@ -2,7 +2,7 @@
   <div class="text-writer">
     <section class="cd-intro text-crawl">
       <h1 class="cd-headline letters type">
-        <span>A collective of </span>
+        <span>A collective </span>
         <span class="cd-words-wrapper">
           <vue-typer :shuffle="true" :text="arrayOfSentences" v-if="renderTyper"></vue-typer>
         </span>
@@ -22,9 +22,9 @@ export default {
     return {
       renderTyper: false,
       arrayOfSentences: [
-        'design-obsessed digital junkies',
-        'sometimes really cool people',
-        'people who fill out this sentence'
+        'of design-obsessed digital junkies',
+        'building captivating user experiences',
+        'using technology as the spark for change'
       ]
     }
   },

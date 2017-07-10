@@ -65,6 +65,7 @@ export default {
     font-size: 34px;
     color: #FFFFFF;
     line-height: 42px;
+    color: rgba(255,255,255,0.90);
   }
 
   .info {
@@ -76,7 +77,7 @@ export default {
 
     font-weight: bold;
     font-size: 18px;
-    color: rgba(255,255,255,0.70);
+    color: rgba(255,255,255,0.90);
     letter-spacing: 2.2px;
     text-transform: uppercase;
   }
