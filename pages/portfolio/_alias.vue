@@ -235,6 +235,11 @@ export default {
       text-decoration: none;
       color: #F48E5C;
       text-transform: uppercase;
+      transition: color 0.3s ease;
+
+      &:hover{
+        color: #95bc9a;
+      }
     }
   }
 
@@ -289,6 +294,8 @@ export default {
     img {
       width: 100%;
       margin-bottom: 50px;
+      box-shadow: 0 0 2px 0 rgba(0,0,0,0.07), 0 2px 2px 0 rgba(0,0,0,0.14);
+      border-radius: 5px;
     }
 
     h1, h2, h3, h4, h5 {
