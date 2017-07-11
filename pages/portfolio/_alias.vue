@@ -244,6 +244,10 @@ export default {
   }
 
   @media (max-width: 768px) {
+    .project__title {
+      line-height: 25px;
+    }
+
     .project-images__item {
       margin-bottom: 50px;
     }

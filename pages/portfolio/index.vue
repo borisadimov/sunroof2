@@ -420,6 +420,7 @@ export default {
       margin-bottom: 70px;
       width: 100%;
       display: block;
+      padding: 0;
 
       &.next,
       &.previous {
@@ -444,10 +445,13 @@ export default {
       margin-bottom: 5px;
       width: 100%;
       white-space: pre-wrap;
+      line-height: 25px;
     }
 
     .slider-item__description {
       margin-bottom: 20px;
+      white-space: pre-wrap;
+      padding: 0 23px;
     }
 
     .slider-item img {
