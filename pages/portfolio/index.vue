@@ -310,6 +310,14 @@ export default {
       justify-content: center;
       align-items: center;
 
+      &:hover {
+        .slider-item__name {
+          border-color: #F8E5C1;
+        }
+        img {
+          box-shadow: 0 0 6px 0 rgba(0,0,0,0.07), 0 6px 6px 0 rgba(0,0,0,0.14);
+        }
+      }
     }
 
     &.previous {
@@ -326,6 +334,9 @@ export default {
   .slider-item img {
     height: 100%;
     width: 100%;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.07), 0 2px 2px 0 rgba(0,0,0,0.14);
+    border-radius: 5px;
+    transition: box-shadow 0.5s ease;
   }
 
   .slider-item__inner {
@@ -342,15 +353,19 @@ export default {
   .slider-item__name {
     margin-bottom: 10px;
 
-    font-size: 26px;
+    font-size: 33px;
+    font-weight: bold;
     color: rgba(0, 0, 0, 0.70);
     letter-spacing: 2.2px;
     text-transform: uppercase;
+    border-bottom: 7px solid rgba(255,255,255,0);
+    line-height: 16px;
+    transition: border-color 0.3s ease;
   }
 
   .slider-item__description {
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.40);
+    color: rgba(0, 0, 0, 0.54);
     letter-spacing: 0;
     line-height: 20px;
     margin-bottom: 20px;

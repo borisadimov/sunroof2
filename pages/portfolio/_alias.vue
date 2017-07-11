@@ -2,7 +2,7 @@
   .project
     .project-container
       .project__title
-        | {{ project.title }}
+        span(v-html="project.title")
       .project__subtitle
         | {{ project.subtitle }}
       .project-wrapper(:class="{'project-wrapper--shown': isShown}")
@@ -11,7 +11,7 @@
             .project-item
               .project-item__label
                 | LIVE
-              a.project-item__value(:href="project.live")
+              a.project-item__value(:href="project.live" target="_blank")
                 | {{ project.live }}
 
             .project-item
@@ -145,17 +145,24 @@ export default {
     margin-top: 5px;
 
     text-align: center;
-    font-size: 26px;
+    font-size: 33px;
     color: rgba(0,0,0,0.70);
     letter-spacing: 2.2px;
     text-transform: uppercase;
+    font-weight: bold;
+    line-height: 16px;
+
+    & span {
+      display: inline-block;
+      border-bottom: 7px solid #F8E5C1;
+    }
   }
 
   .project__subtitle {
     margin-top: 10px;
     text-align: center;
     font-size: 14px;
-    color: rgba(0,0,0,0.40);
+    color: rgba(0,0,0,0.54);
     letter-spacing: 0;
     line-height: 20px;
 
@@ -187,15 +194,15 @@ export default {
   .project-item__label {
     margin-bottom: 11px;
     font-weight: bold;
-    font-size: 18px;
-    color: rgba(0,0,0,0.70);
-    letter-spacing: 2.2px;
+    font-size: 20px;
+    color: #2f626d;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
   }
 
   .project-item__value {
     font-size: 14px;
-    color: rgba(0,0,0,0.70);
+    color: rgba(0,0,0,0.54);
     letter-spacing: 0;
     line-height: 20px;
     text-decoration: none;
@@ -203,6 +210,9 @@ export default {
     .project-item__value--bold {
       margin-right: 4px;
       font-weight: bold;
+      font-size: 16px;
+      color: #F48E5C;
+      text-transform: uppercase;
     }
   }
 
@@ -223,7 +233,8 @@ export default {
     a {
       font-weight: bold;
       text-decoration: none;
-      color: rgba(0,0,0,0.70);
+      color: #F48E5C;
+      text-transform: uppercase;
     }
   }
 
