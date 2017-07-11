@@ -3,7 +3,7 @@
     black-background
     .container
         .page_title
-          | Sunroof. Pushing boundaries on what the web is.
+
 
         .title
           | Who We Are
@@ -87,7 +87,6 @@ export default {
     flex-flow: column nowrap;
     justify-content: center;
     height: 100%;
-    margin-top: 20px;
   }
 
   .page_title {
