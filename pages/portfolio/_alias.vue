@@ -377,5 +377,8 @@ export default {
     .project-phones {
       display: none;
     }
+    .project-container {
+      padding: 0 20px !important;
+    }
   }
 </style>
