@@ -355,7 +355,7 @@ export default {
 
     font-size: 33px;
     font-weight: bold;
-    color: rgba(0, 0, 0, 0.70);
+    color: #4c4c4c;
     letter-spacing: 2.2px;
     text-transform: uppercase;
     border-bottom: 7px solid rgba(255,255,255,0);

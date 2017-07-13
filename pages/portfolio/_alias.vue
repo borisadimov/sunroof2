@@ -146,7 +146,7 @@ export default {
 
     text-align: center;
     font-size: 33px;
-    color: rgba(0,0,0,0.70);
+    color: #4c4c4c;
     letter-spacing: 2.2px;
     text-transform: uppercase;
     font-weight: bold;
