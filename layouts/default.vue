@@ -110,7 +110,7 @@ export default {
     z-index: 11;
 
     &:hover .header-link__text {
-      opacity: 0.7;
+      opacity: 1;
       transform: translate3d(0,0,0);
     }
   }
@@ -170,7 +170,7 @@ export default {
   @media (min-width: 769px) {
     .header-link {
       height: 8vw;
-      width: 8vw;
+      width: 12vw;
     }
 
     .header-link__home {
@@ -230,7 +230,7 @@ export default {
       fill: transparent !important;
 
       path {
-        fill: #000;
+        fill: #2f626d;
         transition: fill .2s ease;
         will-change: fill;
       }
@@ -248,7 +248,7 @@ export default {
       }
 
       circle {
-        fill: #000;
+        fill: #2f626d;
       }
     }
   }
@@ -304,24 +304,24 @@ export default {
 
     .svg-home {
       use:last-child {
-        stroke: #000;
+        stroke: #2f626d;
       }
     }
 
     .svg-about path {
-      stroke: #000;
+      stroke: #2f626d;
     }
 
     .svg-portfolio {
-      stroke: #000 !important;
+      stroke: #2f626d !important;
     }
 
     .svg-contact path {
-      stroke: #000;
+      stroke: #2f626d;
     }
 
     .header-link__home:hover use:last-child {
-      stroke: #f8e5c1;
+      stroke: #2f626d;
     }
 
     .header-link__logo {
@@ -338,20 +338,20 @@ export default {
 
     .svg-home {
       use:last-child {
-        stroke: #000;
+        stroke: #2f626d;
       }
     }
 
     .svg-about path {
-      stroke: #000;
+      stroke: #2f626d;
     }
 
     .svg-portfolio {
-      stroke: #000 !important;
+      stroke: #2f626d !important;
     }
 
     .svg-contact path {
-      stroke: #000;
+      stroke: #2f626d;
     }
 
     .header-link__home:hover use:last-child {
@@ -405,9 +405,11 @@ export default {
     margin: 0 10px;
 
     font-family: SourceSansPro-Regular;
-    font-size: 14px;
-    color: rgba(0,0,0,0.70);
-    letter-spacing: 0;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2f626d;
+    letter-spacing: 1.5px;
 
     opacity: 0.001;
     transform: translate3d(-100%,0,0);

@@ -277,7 +277,7 @@ export default {
       position: absolute;
       left: 0;
       top: 0;
-      background: #414042;
+      background: #2f626d;
     }
   }
 
