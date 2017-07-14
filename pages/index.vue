@@ -29,4 +29,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .home {
+    height: 100vh;
+  }
 </style>

@@ -62,7 +62,7 @@ export default {
 }
 
 </script>
-<style scoped lang="scss">
+<style lang="scss">
   * {
     box-sizing: border-box;
   }
@@ -409,7 +409,6 @@ export default {
   .header-link__text {
     margin: 0 10px;
 
-    font-family: SourceSansPro-Regular;
     font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
