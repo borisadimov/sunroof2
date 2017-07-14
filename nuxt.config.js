@@ -9,7 +9,8 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      { hid: 'description', name: 'description', content: 'Nuxt.js project' },
+      { property: 'og:image:secure_url', content: 'https://trello-attachments.s3.amazonaws.com/596553891d64390dbc4c5c9d/600x344/f9a8277d711edbf44ccb3ad96bf855b2/SR-web-preview.jpg' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
