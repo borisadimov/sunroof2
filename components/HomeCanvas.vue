@@ -274,7 +274,7 @@ export default {
       // Paint instances in sorted order
       for (let person of persons) {
         if (person === undefined) {
-          console.log('skipped', person)
+          // console.log('skipped', person)
           continue
         }
         person.nextAction()

@@ -90,6 +90,10 @@ export default {
       min-height: 100vh;
     }
 
+    .home {
+      height: 100vh;
+    }
+
     .container {
       padding: 100px 30px;
     }
