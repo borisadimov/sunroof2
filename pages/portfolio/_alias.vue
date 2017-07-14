@@ -25,10 +25,10 @@
             .project-item__value
               | <span class="project-item__value--bold">Who:</span>
               span(v-html="project.project_who")
-              br
+            .project-item__value
               | <span class="project-item__value--bold">What:</span>
               span(v-html="project.project_what")
-              br
+            .project-item__value
               | <span class="project-item__value--bold">How:</span>
               span(v-html="project.project_how")
 
@@ -206,6 +206,12 @@ export default {
     letter-spacing: 0;
     line-height: 20px;
     text-decoration: none;
+    display: flex;
+    flex-flow: row nowrap;
+
+    &:not(:first-child) {
+      margin-top: 15px;
+    }
 
     .project-item__value--bold {
       margin-right: 4px;
@@ -213,6 +219,15 @@ export default {
       font-size: 16px;
       color: #F48E5C;
       text-transform: uppercase;
+    }
+
+    span {
+      display: block;
+
+      &:first-child {
+        min-width: 46px;
+        margin-right: 25px;
+      }
     }
   }
 
