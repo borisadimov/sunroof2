@@ -11,8 +11,7 @@
             .project-item
               .project-item__label
                 | LIVE
-              a.project-item__value(:href="project.live" target="_blank")
-                | {{ project.live }}
+              .project-item__value(v-html="project.live")
 
             .project-item
               .project-item__label
@@ -219,6 +218,11 @@ export default {
       font-size: 16px;
       color: #F48E5C;
       text-transform: uppercase;
+    }
+
+    a {
+      color: rgba(0,0,0,0.70);
+      text-decoration: none;
     }
 
     span {

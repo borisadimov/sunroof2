@@ -89,8 +89,8 @@
               .mark-item(v-if="portfolioItem.live !== ''")
                 .mark-item__label
                   | LIVE
-                a.mark-item__value(:href="portfolioItem.live")
-                  | {{ portfolioItem.live }}
+                .mark-item__value(v-html="portfolioItem.live")
+                  
 
               .mark-item(v-if="portfolioItem.services !== ''")
                 .mark-item__label
@@ -692,6 +692,11 @@ export default {
     .mark-item__value--bold {
       margin-right: 4px;
       font-weight: bold;
+    }
+
+    a {
+      color: rgba(0,0,0,0.70);
+      text-decoration: none;
     }
   }
 
