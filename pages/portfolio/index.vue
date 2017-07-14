@@ -291,7 +291,6 @@ export default {
 
   .slider-item {
     display: inline-block;
-    vertical-align: middle;
     width: 55vw;
     padding: 0 100px;
 
@@ -400,6 +399,7 @@ export default {
 
     .slider-container {
       padding: 100px 0;
+      height: initial;
     }
 
     .slider {
@@ -456,6 +456,7 @@ export default {
 
     .slider-item img {
       border-radius: 6px;
+      height: initial;
     }
 
     .slider-item__margin {
