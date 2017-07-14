@@ -10,7 +10,13 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Nuxt.js project' },
-      { property: 'og:image:secure_url', content: 'https://trello-attachments.s3.amazonaws.com/596553891d64390dbc4c5c9d/600x344/f9a8277d711edbf44ccb3ad96bf855b2/SR-web-preview.jpg' }
+      { property: 'fb:app_id', content: '115591269072070' },
+      { property: 'og:image', content: 'https://trello-attachments.s3.amazonaws.com/596553891d64390dbc4c5c9d/600x344/f9a8277d711edbf44ccb3ad96bf855b2/SR-web-preview.jpg' },
+      { property: 'og:image:width', content: '400' },
+      { property: 'og:image:height', content: '200' },
+      { property: 'og:description', content: 'Sunroof was built to be different. An alternative to the large agency. We are a collective of design-obsessed digital junkies, based in Los Angeles. Our focus is to create new interactive experiences for users; striking the perfect balance between usability and aesthetic. We seek to push creative and developmental boundaries, while bringing ambitious ideas to life.' },
+      { property: 'og:title', content: 'Sunroof.io' },
+      { property: 'og:url', content: 'http://sunroof.io' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
