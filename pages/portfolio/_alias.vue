@@ -158,7 +158,7 @@ export default {
   }
 
   .project__subtitle {
-    margin-top: 10px;
+    margin-top: 5px;
     text-align: center;
     font-size: 14px;
     color: rgba(0,0,0,0.54);
@@ -186,7 +186,7 @@ export default {
 
   .project-row {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-between;
   }
 
@@ -264,7 +264,7 @@ export default {
 
   @media (max-width: 768px) {
     .project__title {
-      line-height: 25px;
+      line-height: 30px;
     }
 
     .project-images__item {
@@ -273,6 +273,10 @@ export default {
 
     .project-item {
       margin-bottom: 30px;
+    }
+
+    .project-item__value {
+      flex-flow: row wrap;
     }
   }
 </style>
@@ -393,11 +397,17 @@ export default {
   }
 
   @media (max-width: 768px) {
+    .project {
+      padding: 80px 0 !important;
+    }
     .project-phones {
       display: none;
     }
     .project-container {
       padding: 0 20px !important;
+    }
+    .project-footer {
+      margin-top: 0 !important;
     }
   }
 </style>

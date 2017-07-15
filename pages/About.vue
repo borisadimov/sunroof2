@@ -2,9 +2,6 @@
   .page.about
     black-background
     .container
-        .page_title
-
-
         .title
           | Who We Are
         .subtitle
@@ -170,12 +167,17 @@ export default {
   }
 
   @media (max-width: 480px) {
+    .container {
+      display: block;
+      padding: 30px 30px 80px 30px !important;
+    }
     .page_title {
       width: 100%;
     }
 
     .title {
       width: 100%;
+      margin: 50px auto 12px auto;
     }
 
     .subtitle {

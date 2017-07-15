@@ -84,6 +84,11 @@ export default {
 
   .info-item {
     margin-bottom: 35px;
+    width: 50%;
+  }
+
+  .info-item:last-child {
+    margin-bottom: 0;
   }
 
   .info-item__title {
@@ -106,6 +111,7 @@ export default {
   @media (max-width: 425px) {
     .container {
       display: block;
+      padding: 80px 30px 0 30px !important;
     }
 
     .title {
@@ -114,7 +120,7 @@ export default {
 
     .info-list {
       display: flex;
-      flex-flow: row nowrap;
+      flex-flow: row wrap;
       justify-content: space-between;
     }
   }

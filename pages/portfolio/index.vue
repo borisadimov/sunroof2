@@ -350,7 +350,7 @@ export default {
   }
 
   .slider-item__name {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 
     font-size: 33px;
     font-weight: bold;
@@ -398,7 +398,7 @@ export default {
     }
 
     .slider-container {
-      padding: 100px 0;
+      padding: 80px 0;
       height: initial;
     }
 
@@ -445,7 +445,7 @@ export default {
       margin-bottom: 5px;
       width: 100%;
       white-space: pre-wrap;
-      line-height: 25px;
+      line-height: 30px;
     }
 
     .slider-item__description {
