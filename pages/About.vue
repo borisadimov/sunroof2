@@ -37,7 +37,7 @@
               .skills-item__title
                 | Solutions
               .skills-item__skill
-                | Interactive Web Experiences
+                | 2D & 3D Web Experiences
               .skills-item__skill
                 | Mobile Applications
               .skills-item__skill
@@ -45,7 +45,7 @@
               .skills-item__skill
                 | Unity Development
               .skills-item__skill
-                | 3D Web Experiences
+                | Mailchimp Email Templates
               .skills-item__skill
                 | Wordpress Theme Development
               .skills-item__skill

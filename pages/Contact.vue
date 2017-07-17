@@ -2,11 +2,7 @@
   .page.contact
     .container
       .title
-        | We are avilable for
-        br
-        | contract work.
-        br
-        | Drop us a line.
+        | This portfolio is a glimpse at the way we design and prototype in code. Design something familiar, program it to do something unexpected, make sure people feel something. Available for the right project.
 
       .info
         .info__title
@@ -61,10 +57,12 @@ export default {
   }
 
   .title {
-    flex: 0 0 46.2%;
-    font-size: 34px;
+    flex: 0 0 38%;
+    margin-right: 10%;
+
+    font-size: 24px;
     color: #FFFFFF;
-    line-height: 42px;
+    line-height: 32px;
     color: rgba(255,255,255,0.90);
   }
 
