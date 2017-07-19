@@ -425,6 +425,7 @@ export default {
       &.next,
       &.previous {
         opacity: 1;
+        pointer-events: auto;
       }
 
       &:last-child {
